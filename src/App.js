@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from 'react';
+import { Routes, Route } from 'react-router-dom'; 
+import FlipkartLandingPage from './FlipkartLandingPage'; 
+import ProductDetailPage from './ProductDetailPage'; 
+// import Header from './Header'; 
+
+const App = () => {
+    return (
+        <>
+            {/* <Header />  */}
+            <Routes>
+                <Route 
+                    path="/" 
+                    element={<FlipkartLandingPage />} 
+                />
+                
+                <Route 
+                    path="/product/:id" 
+                    element={<ProductDetailPage />} 
+                />
+
+                <Route path="*" element={<div>404 Page Not Found</div>} />
+            </Routes>
+        </>
+    );
+};
 
 export default App;
