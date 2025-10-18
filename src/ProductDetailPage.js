@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { DiCssdeck, DiSafari, DiSnapSvg } from 'react-icons/di';
+import { DiCssdeck, DiDart, DiSafari, DiSnapSvg } from 'react-icons/di';
+import { FaKickstarterK } from 'react-icons/fa';
+import { GiKitchenKnives } from 'react-icons/gi';
 import { LiaDnaSolid } from 'react-icons/lia';
 import { SiD, SiD3Dotjs, SiDsautomobiles } from 'react-icons/si';
 import { useParams } from 'react-router-dom';
@@ -35,12 +37,12 @@ const allProducts = {
         questions: "2,729",
         deliveryDate: '20 Oct',
         images: [
-            { src: "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/h/q/k/-original-imahfw4vamrf5xhf.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/5/x/f/-original-imahfw4vas3awbzr.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/0/s/v/-original-imahfw4v4yk8gfsd.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/f/h/b/-original-imahfw4vrskkrnrs.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 4' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/x/9/q/-original-imahfw4vpt2ejwn9.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 5' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/5/x/3/-original-imahfw4vezavz8gf.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 6' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/0/7/s/-original-imahgy26hqbqjfgb.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/m/l/t/-original-imahgy2578bcxcxs.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/f/u/t/-original-imahgy26gdgz7fqh.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/3/n/x/-original-imahgy266uxbttjd.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 4' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/g/p/d/-original-imahgy262xxdhacq.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 5' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/f/g/h/-original-imahgy26yb5wdunb.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 6' },
         ],
     },
        '3': {
@@ -132,11 +134,7 @@ const ProductImageGallery = ({ images }) => (
             ))}
         </div>
         <div className="main-image-display">
-            <img src={images[0].src.replace('/100/100/', '/600/600/')} alt={images[0].alt} />
-            
-            <div className="gemini-badge">
-                <p dangerouslySetInnerHTML={{ __html: 'with **Google Gemini**' }} /> 
-            </div>
+            <img src={images[0].src.replace('/128/128/', '/416/416/')} alt={images[0].alt} />
         </div>
     </div>
 );
@@ -146,15 +144,15 @@ const ProductDetails = ({ data }) => (
         <h1 className="product-title">{data.name}</h1>
         
         <div className="rating-share-section">
-            <span className="rating-badge">{data.rating} <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTYuNSA5LjQzOWwtMy42NzQgMi4yMy45NC00LjI2LTMuMjEtMi44ODMgNC4yNTQtLjQwNEw2LjUuMTEybDEuNjkgNC4wMSA0LjI1NC40MDQtMy4yMSAyLjg4Mi45NCA0LjI2eiIvPjwvc3ZnPg==" class="Rza2QY"></img></span>
+            <span className="rating-badge">{data.rating} <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTYuNSA5LjQzOWwtMy42NzQgMi4yMy45NC00LjI2LTMuMjEtMi44ODMgNC4yNTQtLjQwNEw2LjUuMTEybDEuNjkgNC4wMSA0LjI1NC40MDQtMy4yMSAyLjg4Mi45NCA0LjI2eiIvPjwvc3ZnPg==" className="Rza2QY" alt="star"/></span>
             <span className="review-text">{data.reviews.toLocaleString()} Ratings & {data.questions} Reviews</span>
-            <span className="assured-badge"><img height="21" src="flipmain/public/images/fa_9e47c1.png" /></span>
+            <span className="assured-badge" role="img" aria-label="Flipkart Assured"></span>
             <span className="compare-share-links">| Compare | Share</span>
         </div>
         
         <div className="price-section">
             <span className="current-price">{data.price}</span>
-            <span className="mrp-price">{data.mrp}</span>
+            <span className="mrp-price">M.R.P. {data.mrp}</span>
             <span className="discount-percent">{data.discount} Off</span>
         </div>
 
@@ -188,16 +186,15 @@ const ProductDetails = ({ data }) => (
 const ProductActions = () => (
     <div className="product-actions-bar">
         <button className="add-to-cart-btn">
-            <svg class="NwyjNT" width="16" height="16" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg"><path class="" d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86" fill="#fff"></path></svg>ADD TO CART
+            <svg className="NwyjNT" width="16" height="16" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg"><path className="" d="M15.32 2.405H4.887C3 2.405 2.46.805 2.46.805L2.257.21C2.208.085 2.083 0 1.946 0H.336C.1 0-.064.24.024.46l.644 1.945L3.11 9.767c.047.137.175.23.32.23h8.418l-.493 1.958H3.768l.002.003c-.017 0-.033-.003-.05-.003-1.06 0-1.92.86-1.92 1.92s.86 1.92 1.92 1.92c.99 0 1.805-.75 1.91-1.712l5.55.076c.12.922.91 1.636 1.867 1.636 1.04 0 1.885-.844 1.885-1.885 0-.866-.584-1.593-1.38-1.814l2.423-8.832c.12-.433-.206-.86-.655-.86" fill="#fff"></path></svg>ADD TO CART
         </button>
         <button className="buy-now-btn">
-            <img src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMHY3LjdoMi4xVjE0TDcgNS42SDQuMkw3IDAiIGZpbGw9IiNGRkYiLz48L3N2Zz4="/>BUY NOW</button>
+            <img src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMHY3LjdoMi4xVjE0TDcgNS42SDQuMkw3IDAiIGZpbGw9IiNGRkYiLz48L3N2Zz4=" alt="buy icon"/>BUY NOW</button>
     </div>
 );
 
-
 const ProductDetailPage = () => {
-    const { id } = useParams();
+    const { id } = useParams(); 
     const productData = allProducts[id]; 
     
     if (!productData) {
@@ -272,32 +269,6 @@ const ProductDetailPage = () => {
             max-height: 100%;
             object-fit: contain;
         }
-        .feature-overlay-box {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.85);
-            color: var(--light-text);
-            padding: 15px;
-            border-radius: 4px;
-            font-size: 11px;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-        .feature-item {
-            margin: 0 0 5px 0;
-        }
-        .gemini-badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #555;
-            background: #fff;
-            padding: 4px 8px;
-            border-radius: 4px;
-        }
         .product-actions-bar {
             display: flex;
             gap: 10px;
@@ -357,6 +328,7 @@ const ProductDetailPage = () => {
             height: 15px;
             background-image: url('https://static-assets-web.flixcart.com/fk-p-s/assets/images/flipkart_assured.svg');
             background-repeat: no-repeat;
+            background-size: contain;
         }
         .compare-share-links {
             color: var(--primary-blue);
@@ -402,8 +374,8 @@ const ProductDetailPage = () => {
         }
         .offers-list li {
             margin-bottom: 5px;
-            list-style-image: url("https://rukminim2.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90");
             padding-left: 20px;
+            position: relative;
         }
         .offers-list li::before {
             content: "•";
@@ -412,6 +384,8 @@ const ProductDetailPage = () => {
             display: inline-block; 
             width: 1em;
             margin-left: -1em;
+            position: absolute;
+            left: 0;
         }
         .view-more-offers {
             color: var(--primary-blue);

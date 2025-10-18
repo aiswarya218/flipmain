@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { AiFillAlipaySquare, AiFillCheckSquare, AiFillSketchCircle, AiFillSketchSquare } from 'react-icons/ai';
+import { FcEmptyFilter } from 'react-icons/fc';
+import { GiDew } from 'react-icons/gi';
+import { LiaAdSolid } from 'react-icons/lia';
+import { RiFeedbackFill } from 'react-icons/ri';
+import { Si2K, SiD, SiD3Dotjs, SiDocsdotrs, SiK3S, SiKakao, SiKasasmart } from 'react-icons/si';
+import { Link, useNavigate } from 'react-router-dom';
 
 const appStyles = `
     :root {
@@ -12,7 +18,7 @@ const appStyles = `
 
     body {
         font-family: 'Inter', sans-serif;
-        margin: 0;
+        margin: 0;  
         padding: 0;
         background-color: #f1f3f6;
         min-height: 100vh; 
@@ -31,7 +37,7 @@ const appStyles = `
         width: 100%;
     }
 
-    /* Header Styles */
+    /* Header */
     .header {
         position: sticky;
         top: 0;
@@ -154,12 +160,11 @@ const appStyles = `
         margin: 0 auto;
     }
     
-
 .category-item {
     display: inline-flex;
     flex-direction: column;
-    align-items: center; /* 🌟 This correctly centers children horizontally in a column flex container 🌟 */
-    text-align: center; /* Ensures text is centered */
+    align-items: center; 
+    text-align: center; 
     cursor: pointer;
     padding: 8px 4px;
     transition: color 0.2s, transform 0.3s;
@@ -176,12 +181,12 @@ const appStyles = `
 
     display: block; 
     margin: 0 auto; 
-    margin-bottom: 4px; /* A small gap between image and text */
+    margin-bottom: 4px; 
 }
 
 .category-name {
     font-size: 14px;
-    margin-top: 0; /* Removing redundant margin-top if using margin-bottom on image */
+    margin-top: 0; 
     white-space: normal;
     line-height: 1.2;
 }
@@ -272,7 +277,7 @@ const appStyles = `
     border-radius: 4px;
 }
 
- /* Ad Card Grid */
+ /* Ad Card */
     .ad-grid-container {
         padding: 0 16px;
         margin-bottom: 12px;
@@ -287,7 +292,6 @@ const appStyles = `
 /* Base Card */
 .ad-card {
     background-color: #f0f0f0; 
-    border-radius: 8px;
     overflow: hidden; 
     position: relative;
     text-decoration: none;
@@ -300,12 +304,6 @@ const appStyles = `
     aspect-ratio: 16 / 9; 
     justify-content: space-between; 
     padding: 16px 0 16px 16px; 
-}
-
-/* Bottom Ads (Image should fill the entire card) */
-.bottom-ad-card {
-    aspect-ratio: 4 / 1; 
-    display: block; /* For bottom ads, let the image take over */
 }
 
 .ad-content-wrapper {
@@ -329,7 +327,7 @@ const appStyles = `
 }
 
 .top-ad-card .ad-card-image {
-    width: auto; /* Let object-fit handle the width relative to height */
+    width: auto; 
     height: 100%;
     right: 0;
     left: auto;
@@ -366,7 +364,6 @@ const appStyles = `
         color: #fff;
     }
     
-    /* Diwali ad overlay for texture */
     .diwali-ad::before {
         content: "";
         position: absolute;
@@ -381,7 +378,7 @@ const appStyles = `
         z-index: 2;
     }
 
-    /* Deals Section */
+    /* Deals */
     .deals-section {
         background-color: #fff;
         padding: 20px 16px;
@@ -464,8 +461,8 @@ const appStyles = `
         letter-spacing: -.01px;
         font-family: inter_regular,fallback-inter_regular,Arial,sans-serif;
     }
-    .deal-price {
-        border-width: 0px;
+.deal-price {
+  border-width: 0px;
   box-sizing: border-box;
   display: inline;
   white-space: nowrap;
@@ -474,7 +471,7 @@ const appStyles = `
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-    }
+}
     .deal-info {
         font-size: 11px;
         color: #878787;
@@ -685,7 +682,6 @@ const appStyles = `
   margin-left: 10px; 
   opacity: 0.7;
 }
-
     @media (min-width: 600px) {
         .deals-header h2 {
             font-size: 24px;
@@ -732,7 +728,6 @@ const appStyles = `
             margin: 12px auto 24px auto;
         }
         .deals-list {
-            /* 5 deals + 1 placeholder/ad = 6 items */
             grid-template-columns: repeat(6, 1fr);
             gap: 24px;
         }
@@ -802,44 +797,99 @@ const bottomAds = [
     }
 ];
 
-const Header = () => (
-    <header className="header">
-        <div className="header-content">
-            <div className="logo-section">
-                <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg" width="160" height="40" title="Flipkart"></img>
-            </div>
+const directoryData = {
+'MOST SEARCHED FOR ON FLIPKART:': [
+        'Big Bang Diwali Sale', 'Dhanteras Offers', 'Bhai Dooj Sale', 'iPhone 17', 'iPhone 17 Pro Max', 'Google Pixel 10', 'Flipkart Axis Bank Super Elite Credit card', 'Mobile Phones', 'Grievance Redressal',
+    ],
+    'MOBILES': [
+        'Infinix SMART 10', 'OPPO Reno 14 Pro', 'Motorola G64 5G', 'OPPO Reno 12', 'Motorola G45 5G', 'Motorola Edge 50 Fusion', 'Realme 12+ 5G', 'Smart 8', 'Vivo X30', 'Vivo Y30', 'Samsung Galaxy S24 5G', 'Infinix HOT 30i', 'Realme 10 Pro 5G', 'Nokia Mobile', 'Samsung Mobile', 'Oppo Mobile', 'Vivo Mobile', 'Apple Mobile',
+    ],
+    'CAMERA': [
+        'GoPro Action Camera', 'Nikon Camera', 'Canon Camera', 'Sony Camera', 'Canon DSLR', 'Nikon DSLR',
+    ],
+    'LAPTOPS': [
+        'Asus ROG Ally', 'MacBook Pro M2', 'Premium Laptop', 'ASUS ROG Strix SCAR 16 (2023)', 'Core i9 13th Gen', 'ASUS ROG Zephyrus M16 (2023)', 'Core i3 13th Gen', 'ASUS Zenbook 14 OLED (2022)', 'Realme Book Prime Core i5 11th Gen', 'Microsoft Surface Go Pentium 128GB', 'Apple Laptops', 'Acer Laptops', 'Lenovo Laptops', 'Dell Laptops', 'Asus Laptops', 'HP Laptops', 'MSI Laptops', 'Samsung Laptops', 'InBook Y1 Plus', 'SAMSUNG Galaxy Book13', '12th Gen Intel Core Laptops',
+    ],
+    'TVS': [
+        'LG TV', 'Sony TV', 'Samsung TV', 'TCL TV', 'Mi TV', 'Panasonic TV', 'OnePlus TVs', 'Iffalcon TV', '32 Inch TV', '43 Inch TV', '50 Inch TV', '55 Inch TV', '65 Inch TV', '75 Inch TV', 'LED TV', 'OLED TV', 'QLED TV',
+    ],
+    'LARGE APPLIANCES': [
+        'Electric Cookers', 'Air Fryer', 'Sandwich Maker', 'Electric Jug/Heater', 'Travel Kettles', 'Induction Cooktops', 'Inverters / stabilizer', 'Wet Grinders', 'French Press', 'Milk/Coffee Frother', 'Chimneys', 'Microwave Ovens', 'Vacuum Cleaners', 'Fan',
+    ],
+    'CLOTHING': [
+        'Sarees', 'Men\'s Jeans', 'Lehenga', 'Tops', 'Men\'s Footwear', 'Shacket', 'Men\'s Jackets', 'Designer blouses', 'Women\'s Haldi Dress', 'Women\'s Mehndi Dress', 'Lavender Saree', 'Blouse designs', 'Shirts', 'Cotton saree blouse designs', 'T-shirts', 'Men\'s Blazer', 'Dresses', 'One pieces', 'Readymade saree', 'Groom wedding sherwani', 'Designer Salwar Suits', 'Bra', 'Track Pant', 'Men\'s Kurta', 'Parry Dresses', 'Palazzo Suits', 'Anarkali', 'Gowns', 'Cut out dress', 'Salwar Suits', 'Kurtis', 'Designer Sarees', 'Leggings', 'Shorts', 'Georgette Sarees', 'Ethnic Wear', 'Blouse back design', 'Jodhpur pants',
+    ],
+    'FOOTWEAR': [
+        'Adidas Shoes', 'Reebok Shoes', 'Nike Shoes', 'Puma Shoes', 'Boots', 'Bata Shoes', 'Crocs', 'Woodland Shoes', 'Skechers Shoes', 'Sneakers', 'Women\'s Boots', 'Sports Shoes', 'Loafers', 'Sandals', 'Lotto Sports Shoes', 'Casual Shoes', 'Women\'s Skechers Shoes', 'Adidas Sports Shoes', 'Formal Shoes', 'School Shoes',
+    ],
+    'GROCERIES': [
+        'PhonePe Grocery Voucher', 'Hand Wash', 'Soap', 'Cashew Nuts', 'Sunflower Oil', 'Eggs', 'Toilet Cleaner', 'Harpic Toilet Cleaner', 'Dettol Soap', 'Mustard Oil', 'Biscuits', 'Cheese', 'Patanjali Atta', 'Fortune Oil', 'Aashirvaad Atta', 'Tea',
+    ],
+    'BEST SELLING ON FLIPKART': [
+        'Best Gas Geyser', 'Kitchen Geyser', 'Nutri Blenders', 'Portable Air Cooler', 'Best Air Cooler', 'Bags', 'Women\'s Watch', 'Hitachi Refrigerator 3 Door', 'Books', 'Candles', 'Helmets', 'Wall Clocks', 'Baby Food/Chocolates', 'Calculators', 'Lipsticks', 'Mask', 'Bangles', 'Vertu UPS', 'Fastrack Watches', 'Wallets', 'Cold Coins', 'Realme Pad Mini', 'coewk SW2 Smartwatch', 'Mivi Duopods A350', 'Speaker Cleaner',
+    ],
+    'FURNITURE': [
+        'Furniture', 'Beds', 'Dining sets', 'Wardrobes', 'TV Units', 'Tables', 'Chairs', 'Shelves', 'Bean Bags', 'Office Chairs', 'Computer Table', 'Office Tables', 'Red Sofa', 'Wakefit Beds', 'White Sofa', 'Wakefit Mattress', 'Green Sofa', 'Black Sofa', 'Brown Sofa',
+    ],
+    'BGMH:': [
+        'Car Accessories', 'Bike Accessories', 'Car Dashcams', 'Vehicle Battery', 'Engine Oil', 'Car Air Fresheners', 'Car Cleaning Supplies', 'Homeopathy', 'Cricket', 'Cycles', 'Footballs', 'Treadmills', 'Fitness Accessories', 'Online Guitar', 'Books Store', 'Musical Instrument Store', 'Energy Drinks', 'Milk Drink Mixes', 'Protein Supplements',
+    ],
+};
 
-<div className="search-bar">
-    <div className="search-icon-wrapper">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <title>Search Icon</title>
-            <path d="M10.5 18C14.6421 18 18 14.6421 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18Z" stroke="#717478" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M16 16L21 21" stroke="#717478" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-    <input type="text" placeholder="Search for Products, Brands and More" />
-</div>
-</div>
-            <nav className="nav-links">
-                <a href="#" className="nav-link nav-link-login">
-                   <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-52e0dc.svg" alt="Login" class="-dOa_b L_FVxe" width="24" height="24"></img>
-                    <span>Login</span>
-                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxNCAxMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZF80OTc0Xzc1OTY5KSI+CjxwYXRoIGQ9Ik0zIDJMNyA2TDExIDIiIHN0cm9rZT0iIzExMTExMiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2RfNDk3NF83NTk2OSIgeD0iMC4yNSIgeT0iMC4yNSIgd2lkdGg9IjEzLjUiIGhlaWdodD0iOS44MTI1IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9IjEiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4xNiAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93XzQ5NzRfNzU5NjkiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJlZmZlY3QxX2Ryb3BTaGFkb3dfNDk3NF83NTk2OSIgcmVzdWx0PSJzaGFwZSIvPgo8L2ZpbHRlcj4KPC9kZWZzPgo8L3N2Zz4K" alt="Chevron" class="-dOa_b XdYXbi" width="12" height="12"></img>
-                </a>
-                <a href="#" className="nav-link nav-link-cart">
-                 <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg" alt="Cart" class="_1XmrCc" width="24" height="24"></img>
-                    <span>Cart</span>
-                </a>
-                <a href="#" className="nav-link nav-link-seller">
-                    <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Store-9eeae2.svg" alt="Become a Seller" class="_1XmrCc"></img>
-                    <span>Become a Seller</span>
-                </a>
-                <a href="#" className="nav-link nav-link-seller">
-                 <img class="-dOa_b" src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_3verticalDots-ea7819.svg" width="24" height="24" alt="Dropdown with more help links"></img>
-                </a>
-            </nav>
-        </div>
-    </header>
-);
+const Header = () => {
+    const navigate = useNavigate();
+    // Handles search form submission
+    const handleSearchSubmit = (event) => {
+        event.preventDefault(); 
+        const searchTerm = event.target.elements.search.value.toLowerCase();
+        
+        if (searchTerm.includes('mobile')) {
+            navigate('/mobiles'); 
+        } else {
+             navigate('/mobiles'); 
+        }
+    };
+    
+    return (
+        <header className="header">
+            <div className="header-content">
+                <div className="logo-section">
+                    <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/fkheaderlogo_exploreplus-44005d.svg" width="160" height="40" title="Flipkart" alt="Flipkart Logo"></img>
+                </div>
+
+                <form className="search-bar" onSubmit={handleSearchSubmit}>
+                    <div className="search-icon-wrapper">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <title>Search Icon</title>
+                            <path d="M10.5 18C14.6421 18 18 14.6421 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18Z" stroke="#717478" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                            <path d="M16 16L21 21" stroke="#717478" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </div>
+                    <input type="text" placeholder="Search for Products, Brands and More" name="search" />
+                </form>
+                
+                <nav className="nav-links">
+                    <a href="#" className="nav-link nav-link-login">
+                       <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-52e0dc.svg" alt="Login" width="24" height="24"></img>
+                        <span>Login</span>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTEiIHZpZXdCb3gZz4K" alt="Chevron" width="12" height="12"></img> 
+                    </a>
+                    <a href="#" className="nav-link nav-link-cart">
+                     <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg" alt="Cart" width="24" height="24"></img>
+                        <span>Cart</span>
+                    </a>
+                    <a href="#" className="nav-link nav-link-seller">
+                        <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Store-9eeae2.svg" alt="Become a Seller"></img>
+                        <span>Become a Seller</span>
+                    </a>
+                    <a href="#" className="nav-link nav-link-seller">
+                     <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_3verticalDots-ea7819.svg" width="24" height="24" alt="Dropdown with more help links"></img>
+                    </a>
+                </nav>
+            </div>
+        </header>
+    );
+};
 
 const CategoryMenu = () => (
     <nav className="category-menu">
@@ -903,8 +953,7 @@ const MainBanner = () => {
                 >
                     {bannerImages.map((image) => (
                         <div className="slide-item" key={image.id}>
-                            <img src={image.src} alt={image.alt} onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/1600x270/CCCCCC/333333?text=SALE+BANNER'; 
-                                }}/>
+                            <img src={image.src} alt={image.alt} onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/1600x270/CCCCCC/333333?text=SALE+BANNER'; }}/>
                         </div>
                     ))}
                 </div>
@@ -983,15 +1032,9 @@ const BottomAdGrid = () => (
 );
 
 const DealCard = ({ deal }) => (
-    // 🌟 FIX: Use <Link> to navigate to the product detail page 🌟
     <Link to={`/product/${deal.id}`} className="deal-card"> 
         <div className="deal-image-container">
-            <img 
-                src={deal.img} 
-                alt={deal.name} 
-                className="deal-image" 
-                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/100x100/CCCCCC/333333?text=Deal'; }} 
-            />
+            <img src={deal.img} alt={deal.name} className="deal-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/100x100/CCCCCC/333333?text=Deal'; }} />
         </div>
         <p className="deal-name" title={deal.name}>{deal.name}</p>
         <p className="deal-price">{deal.price}</p>
@@ -1000,7 +1043,6 @@ const DealCard = ({ deal }) => (
 );
 
 const DealsSection = () => {
-    // Only show the first 5 deals + 1 placeholder for the desktop grid (6 items total)
     const dealsToShow = smartphoneDeals.slice(0, 5);
 
     return (
@@ -1014,7 +1056,6 @@ const DealsSection = () => {
                     <DealCard key={deal.id} deal={deal} />
                 ))}
 
-                {/* View More Placeholder (Last grid item, hidden on mobile/tablet via CSS) */}
                 <div className="view-more-placeholder">
                    <img src="https://rukminim2.flixcart.com/fk-p-flap/530/810/image/11dd6ca78faaf848.jpeg?q=90" alt="Image" className=""
   style={{
@@ -1032,45 +1073,6 @@ const DealsSection = () => {
             </div>
         </section>
     );
-};
-
-const directoryData = {
-    'MOST SEARCHED FOR ON FLIPKART:': [
-        'Big Bang Diwali Sale', 'Dhanteras Offers', 'Bhai Dooj Sale', 'iPhone 17', 'iPhone 17 Pro Max', 'Google Pixel 10', 'Flipkart Axis Bank Super Elite Credit card', 'Mobile Phones', 'Grievance Redressal',
-    ],
-    'MOBILES': [
-        'Infinix SMART 10', 'OPPO Reno 14 Pro', 'Motorola G64 5G', 'OPPO Reno 12', 'Motorola G45 5G', 'Motorola Edge 50 Fusion', 'Realme 12+ 5G', 'Smart 8', 'Vivo X30', 'Vivo Y30', 'Samsung Galaxy S24 5G', 'Infinix HOT 30i', 'Realme 10 Pro 5G', 'Nokia Mobile', 'Samsung Mobile', 'Oppo Mobile', 'Vivo Mobile', 'Apple Mobile',
-    ],
-    'CAMERA': [
-        'GoPro Action Camera', 'Nikon Camera', 'Canon Camera', 'Sony Camera', 'Canon DSLR', 'Nikon DSLR',
-    ],
-    'LAPTOPS': [
-        'Asus ROG Ally', 'MacBook Pro M2', 'Premium Laptop', 'ASUS ROG Strix SCAR 16 (2023)', 'Core i9 13th Gen', 'ASUS ROG Zephyrus M16 (2023)', 'Core i3 13th Gen', 'ASUS Zenbook 14 OLED (2022)', 'Realme Book Prime Core i5 11th Gen', 'Microsoft Surface Go Pentium 128GB', 'Apple Laptops', 'Acer Laptops', 'Lenovo Laptops', 'Dell Laptops', 'Asus Laptops', 'HP Laptops', 'MSI Laptops', 'Samsung Laptops', 'InBook Y1 Plus', 'SAMSUNG Galaxy Book13', '12th Gen Intel Core Laptops',
-    ],
-    'TVS': [
-        'LG TV', 'Sony TV', 'Samsung TV', 'TCL TV', 'Mi TV', 'Panasonic TV', 'OnePlus TVs', 'Iffalcon TV', '32 Inch TV', '43 Inch TV', '50 Inch TV', '55 Inch TV', '65 Inch TV', '75 Inch TV', 'LED TV', 'OLED TV', 'QLED TV',
-    ],
-    'LARGE APPLIANCES': [
-        'Electric Cookers', 'Air Fryer', 'Sandwich Maker', 'Electric Jug/Heater', 'Travel Kettles', 'Induction Cooktops', 'Inverters / stabilizer', 'Wet Grinders', 'French Press', 'Milk/Coffee Frother', 'Chimneys', 'Microwave Ovens', 'Vacuum Cleaners', 'Fan',
-    ],
-    'CLOTHING': [
-        'Sarees', 'Men\'s Jeans', 'Lehenga', 'Tops', 'Men\'s Footwear', 'Shacket', 'Men\'s Jackets', 'Designer blouses', 'Women\'s Haldi Dress', 'Women\'s Mehndi Dress', 'Lavender Saree', 'Blouse designs', 'Shirts', 'Cotton saree blouse designs', 'T-shirts', 'Men\'s Blazer', 'Dresses', 'One pieces', 'Readymade saree', 'Groom wedding sherwani', 'Designer Salwar Suits', 'Bra', 'Track Pant', 'Men\'s Kurta', 'Parry Dresses', 'Palazzo Suits', 'Anarkali', 'Gowns', 'Cut out dress', 'Salwar Suits', 'Kurtis', 'Designer Sarees', 'Leggings', 'Shorts', 'Georgette Sarees', 'Ethnic Wear', 'Blouse back design', 'Jodhpur pants',
-    ],
-    'FOOTWEAR': [
-        'Adidas Shoes', 'Reebok Shoes', 'Nike Shoes', 'Puma Shoes', 'Boots', 'Bata Shoes', 'Crocs', 'Woodland Shoes', 'Skechers Shoes', 'Sneakers', 'Women\'s Boots', 'Sports Shoes', 'Loafers', 'Sandals', 'Lotto Sports Shoes', 'Casual Shoes', 'Women\'s Skechers Shoes', 'Adidas Sports Shoes', 'Formal Shoes', 'School Shoes',
-    ],
-    'GROCERIES': [
-        'PhonePe Grocery Voucher', 'Hand Wash', 'Soap', 'Cashew Nuts', 'Sunflower Oil', 'Eggs', 'Toilet Cleaner', 'Harpic Toilet Cleaner', 'Dettol Soap', 'Mustard Oil', 'Biscuits', 'Cheese', 'Patanjali Atta', 'Fortune Oil', 'Aashirvaad Atta', 'Tea',
-    ],
-    'BEST SELLING ON FLIPKART': [
-        'Best Gas Geyser', 'Kitchen Geyser', 'Nutri Blenders', 'Portable Air Cooler', 'Best Air Cooler', 'Bags', 'Women\'s Watch', 'Hitachi Refrigerator 3 Door', 'Books', 'Candles', 'Helmets', 'Wall Clocks', 'Baby Food/Chocolates', 'Calculators', 'Lipsticks', 'Mask', 'Bangles', 'Vertu UPS', 'Fastrack Watches', 'Wallets', 'Cold Coins', 'Realme Pad Mini', 'coewk SW2 Smartwatch', 'Mivi Duopods A350', 'Speaker Cleaner',
-    ],
-    'FURNITURE': [
-        'Furniture', 'Beds', 'Dining sets', 'Wardrobes', 'TV Units', 'Tables', 'Chairs', 'Shelves', 'Bean Bags', 'Office Chairs', 'Computer Table', 'Office Tables', 'Red Sofa', 'Wakefit Beds', 'White Sofa', 'Wakefit Mattress', 'Green Sofa', 'Black Sofa', 'Brown Sofa',
-    ],
-    'BGMH:': [
-        'Car Accessories', 'Bike Accessories', 'Car Dashcams', 'Vehicle Battery', 'Engine Oil', 'Car Air Fresheners', 'Car Cleaning Supplies', 'Homeopathy', 'Cricket', 'Cycles', 'Footballs', 'Treadmills', 'Fitness Accessories', 'Online Guitar', 'Books Store', 'Musical Instrument Store', 'Energy Drinks', 'Milk Drink Mixes', 'Protein Supplements',
-    ],
 };
 
 const DirectorySection = () => (
@@ -1174,8 +1176,9 @@ const Footer = () => (
     </footer>
 );
 
-// Main Application Component 
-const App = () => {
+
+// Main Application Component (The entire landing page content)
+const FlipkartLandingPage = () => {
     return (
         <>
             <style>
@@ -1187,8 +1190,7 @@ const App = () => {
                 <main className="content-area">
                     <CategoryMenu />
                     <MainBanner />  
-                    <TopAdGrid />
-                    <BottomAdGrid />
+                    <TopAdGrid /><BottomAdGrid />
                     <DealsSection />
                 </main>
                 <DirectorySection />
@@ -1198,4 +1200,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default FlipkartLandingPage;
