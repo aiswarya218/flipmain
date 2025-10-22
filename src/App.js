@@ -4,7 +4,7 @@ import FlipkartLandingPage from './FlipkartLandingPage';
 import ProductDetailPage from './ProductDetailPage';
 import ProductListings from './ProductListings';
 import Header from './Header';
-// import Footer from './Footer';
+import Footer from './Footer';
 
 const App = () => {
     return (
@@ -19,7 +19,7 @@ const App = () => {
 
                 <Route path="*" element={<div>404 Page Not Found</div>} />
             </Routes>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 };

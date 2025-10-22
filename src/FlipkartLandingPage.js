@@ -570,118 +570,6 @@ const appStyles = `
 .refresh-button:hover {
     background-color: #1a58a7;
 }
-
-/* Footer */
-.main-footer-container {
-  background-color: #212121; 
-  color: #fff;
-  padding: 30px 0 10px;
-  margin-top: 20px;
-  position: relative; 
-}
-
-.footer-links-top {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px 20px; 
-}
-
-.footer-column {
-  display: flex;
-  flex-direction: column;
-  width: 12%; 
-}
-
-.footer-column h4, .footer-address h4 {
-  color: #878787;
-  font-size: 12px;
-  margin-bottom: 12px;
-}
-
-.footer-column a {
-  font-family: inter_semi_bold,fallback-inter_semi_bold,Arial,sans-serif;
-  font-size: 12px;
-  color: #fff;
-  display: block;
-  line-height: 18px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.footer-column a:hover {
-  text-decoration: underline;
-}
-
-.footer-address {
-  width: 25%;
-  border-left: 1px solid #3d4d62;
-  padding-left: 20px;
-}
-
-.footer-address p {
-  font-size: 12px;
-  line-height: 18px;
-  margin: 5px 0 15px;
-  color: #fff;
-}
-
-.footer-address a {
-  color: #2874f0; 
-  text-decoration: none;
-}
-
-.social-heading {
-  margin-top: 15px !important;
-}
-
-.social-icons span {
-  font-size: 20px;
-  margin-right: 15px;
-  cursor: pointer;
-}
-
-.registered-address {
-  border-left: none; 
-}
-
-.footer-links-bottom {
-  border-top: 1px solid #454d5e;
-  padding: 25px 0;
-  margin-top: 40px;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.footer-tools {
-  display: flex;
-  align-items: center;
-}
-
-.footer-tools a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 13px;
-  margin-right: 40px;
-}
-
-.footer-tools a:hover {
-  color: #f0f0f0;
-}
-
-.footer-copyright {
-  font-size: 13px;
-  color: #fff;
-}
-
-.footer-payments span {
-  font-size: 18px; 
-  margin-left: 10px; 
-  opacity: 0.7;
-}
     @media (min-width: 600px) {
         .deals-header h2 {
             font-size: 24px;
@@ -872,7 +760,7 @@ const Header = () => {
                     <a href="#" className="nav-link nav-link-login">
                        <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/profile-52e0dc.svg" alt="Login" width="24" height="24"></img>
                         <span>Login</span>
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTEiIHZpZXdCb3gZz4K" alt="Chevron" width="12" height="12"></img> 
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iMTEiIHZpZXdCb3g9IjAgMCAxNCAxMSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgZmlsdGVyPSJ1cmwoI2ZpbHRlcjBfZF80OTc0Xzc1OTY5KSI+CjxwYXRoIGQ9Ik0zIDJMNyA2TDExIDIiIHN0cm9rZT0iIzExMTExMiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L2c+CjxkZWZzPgo8ZmlsdGVyIGlkPSJmaWx0ZXIwX2RfNDk3NF83NTk2OSIgeD0iMC4yNSIgeT0iMC4yNSIgd2lkdGg9IjEzLjUiIGhlaWdodD0iOS44MTI1IiBmaWx0ZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIGNvbG9yLWludGVycG9sYXRpb24tZmlsdGVycz0ic1JHQiI+CjxmZUZsb29kIGZsb29kLW9wYWNpdHk9IjAiIHJlc3VsdD0iQmFja2dyb3VuZEltYWdlRml4Ii8+CjxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VBbHBoYSIgdHlwZT0ibWF0cml4IiB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEyNyAwIiByZXN1bHQ9ImhhcmRBbHBoYSIvPgo8ZmVPZmZzZXQgZHk9IjEiLz4KPGZlR2F1c3NpYW5CbHVyIHN0ZERldmlhdGlvbj0iMSIvPgo8ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMC4xNiAwIi8+CjxmZUJsZW5kIG1vZGU9Im5vcm1hbCIgaW4yPSJCYWNrZ3JvdW5kSW1hZ2VGaXgiIHJlc3VsdD0iZWZmZWN0MV9kcm9wU2hhZG93XzQ5NzRfNzU5NjkiLz4KPGZlQmxlbmQgbW9kZT0ibm9ybWFsIiBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJlZmZlY3QxX2Ryb3BTaGFkb3dfNDk3NF83NTk2OSIgcmVzdWx0PSJzaGFwZSIvPgo8L2ZpbHRlcj4KPC9kZWZzPgo8L3N2Zz4K" alt="Chevron" class="-dOa_b XdYXbi" width="12" height="12"></img>
                     </a>
                     <a href="#" className="nav-link nav-link-cart">
                      <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_cart-eed150.svg" alt="Cart" width="24" height="24"></img>
@@ -1091,93 +979,6 @@ const DirectorySection = () => (
     </section>
 );
 
-const Footer = () => (
-   <footer className="main-footer-container">
-      <div className="footer-links-top">
-        <div className="footer-column">
-          <h4>ABOUT</h4>
-          <a href="#">Contact Us</a>
-          <a href="#">About Us</a>
-          <a href="#">Careers</a>
-          <a href="#">Flipkart Stories</a>
-          <a href="#">Press</a>
-          <a href="#">Corporate Information</a>
-        </div>
-        <div className="footer-column">
-          <h4>GROUP COMPANIES</h4>
-          <a href="#">Myntra</a>
-          <a href="#">Cleartrip</a>
-          <a href="#">Shopsy</a>
-        </div>
-        <div className="footer-column">
-          <h4>HELP</h4>
-          <a href="#">Payments</a>
-          <a href="#">Shipping</a>
-          <a href="#">Cancellation & Returns</a>
-          <a href="#">FAQ</a>
-        </div>
-        <div className="footer-column">
-          <h4>CONSUMER POLICY</h4>
-          <a href="#">Cancellation & Returns</a>
-          <a href="#">Terms Of Use</a>
-          <a href="#">Security</a>
-          <a href="#">Privacy</a>
-          <a href="#">Sitemap</a>
-          <a href="#">Grievance Redressal</a>
-          <a href="#">EPR Compliance</a>
-        </div>
-        <div className="footer-address">
-          <h4>Mail Us:</h4>
-          <p>
-            Flipkart Internet Private Limited,<br/>
-            Buildings Alyssa, Begonia & Clove Embassy Tech Village,<br/>
-            Outer Ring Road, Devarabeesanahalli Village, Bengaluru, 560103,<br/>
-            Karnataka, India
-          </p>
-          <h4 className="social-heading">Social:</h4>
-          <div className="social-icons">
-            <span><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNSAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyLjkzMzEgMjFDMTcuOTAzNyAyMSAyMS45MzMxIDE2Ljk3MDYgMjEuOTMzMSAxMkMyMS45MzMxIDcuMDI5NDQgMTcuOTAzNyAzIDEyLjkzMzEgM0M3Ljk2MjU0IDMgMy45MzMxMSA3LjAyOTQ0IDMuOTMzMTEgMTJDMy45MzMxMSAxNi45NzA2IDcuOTYyNTQgMjEgMTIuOTMzMSAyMVoiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTE2LjY4MzEgOC4yNUgxNS4xODMxQzE0LjU4NjQgOC4yNSAxNC4wMTQxIDguNDg3MDUgMTMuNTkyMSA4LjkwOTAxQzEzLjE3MDIgOS4zMzA5NyAxMi45MzMxIDkuOTAzMjYgMTIuOTMzMSAxMC41VjIxIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik05LjkzMzExIDEzLjVIMTUuOTMzMSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" alt="Facebook" width="24" height="24" /></span>
-            <span><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwXzE4M18yMCkiPgo8cGF0aCBkPSJNMTMuNTQzNiAxMC42MTc5TDIwLjA5NzEgM0gxOC41NDQxTDEyLjg1MzcgOS42MTQ0OEw4LjMwODg3IDNIMy4wNjY4OUw5LjkzOTY0IDEzLjAwMjNMMy4wNjY4OSAyMC45OTA4SDQuNjE5OTRMMTAuNjI5MSAxNC4wMDU2TDE1LjQyODggMjAuOTkwOEgyMC42NzA4TDEzLjU0MzIgMTAuNjE3OUgxMy41NDM2Wk0xMS40MTY1IDEzLjA5MDRMMTAuNzIwMiAxMi4wOTQ0TDUuMTc5NTMgNC4xNjkxMUg3LjU2NDkxTDEyLjAzNjMgMTAuNTY1MUwxMi43MzI2IDExLjU2MTFMMTguNTQ0OCAxOS44NzQ4SDE2LjE1OTVMMTEuNDE2NSAxMy4wOTA4VjEzLjA5MDRaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzE4M18yMCI+CjxyZWN0IHg9IjMuMDY2ODkiIHk9IjMiIHdpZHRoPSIxNy42MDM5IiBoZWlnaHQ9IjE4IiByeD0iMC4yIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="Twitter" width="24" height="24" /></span>
-            <span><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/YoutubeLogo-8425c4.svg" alt="YouTube" width="24" height="24" /></span>
-            <span><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/InstagramLogo-43f906.svg" alt="Instagram" width="20" height="20" /></span>
-          </div>
-        </div>
-        <div className="footer-address registered-address">
-          <h4>Registered Office Address:</h4>
-          <p>
-            Flipkart Internet Private Limited,<br/>
-            Buildings Alyssa, Begonia & Clove Embassy Tech Village,<br/>
-            Outer Ring Road, Devarabeesanahalli Village, Bengaluru, 560103,<br/>
-            Karnataka, India<br/>
-            CIN : U51109KA2012PTC066107<br/>
-            Telephone: <a href="tel:04445614700">044-45614700</a> / <a href="tel:04467415800">044-67415800</a>
-          </p>
-        </div>
-      </div>
-
-      <div className="footer-links-bottom">
-        <div className="footer-tools">
-          <a href="#"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/sell-image-9de8ef.svg" alt="Become a Seller" width="13" height="12" />
-          <span>&nbsp;Become a Seller</span></a>
-          <a href="#"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/advertise-image-866c0b.svg" alt="Advertise" width="14" height="14" />
-          <span>&nbsp;Advertise</span></a>
-          <a href="#"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/gift-cards-image-d7ff24.svg" alt="Gift Cards" width="13" height="13" />
-            <span>&nbsp;Gift Cards</span></a>
-          <a href="#"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/help-centre-image-c4ace8.svg" alt="Help Center" width="13" height="13" />
-            <span>&nbsp;Help Center</span></a>
-        </div>
-        <div className="footer-copyright">
-          © 2007-2025 Flipkart.com
-        </div>
-        <div className="footer-payments">
-          <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/payment-method-c454fb.svg" alt="Payment methods"></img>
-        </div>
-      </div>
-    </footer>
-);
-
-
-// Main Application Component (The entire landing page content)
 const FlipkartLandingPage = () => {
     return (
         <>
@@ -1194,7 +995,7 @@ const FlipkartLandingPage = () => {
                     <DealsSection />
                 </main>
                 <DirectorySection />
-                <Footer />
+                {/* <Footer /> */}
             </div>
         </>
     );

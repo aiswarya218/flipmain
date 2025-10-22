@@ -1,9 +1,8 @@
 import React from 'react';
 import './styles.css';
 
-const Footer = () => {
-  return (
-    <footer className="main-footer-container">
+const Footer = () => (
+   <footer className="main-footer-container">
       <div className="footer-links-top">
         <div className="footer-column">
           <h4>ABOUT</h4>
@@ -69,13 +68,13 @@ const Footer = () => {
       <div className="footer-links-bottom">
         <div className="footer-tools">
           <a href="#"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/sell-image-9de8ef.svg" alt="Become a Seller" width="13" height="12" />
-          <span>Become a Seller</span></a>
+          <span>&nbsp;Become a Seller</span></a>
           <a href="#"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/advertise-image-866c0b.svg" alt="Advertise" width="14" height="14" />
-          <span>Advertise</span></a>
+          <span>&nbsp;Advertise</span></a>
           <a href="#"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/gift-cards-image-d7ff24.svg" alt="Gift Cards" width="13" height="13" />
-            <span>Gift Cards</span></a>
+            <span>&nbsp;Gift Cards</span></a>
           <a href="#"><img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/help-centre-image-c4ace8.svg" alt="Help Center" width="13" height="13" />
-            <span>Help Center</span></a>
+            <span>&nbsp;Help Center</span></a>
         </div>
         <div className="footer-copyright">
           © 2007-2025 Flipkart.com
@@ -85,7 +84,6 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+);
 
 export default Footer;
