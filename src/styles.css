@@ -1,5 +1,5 @@
 .main-footer-container {
-  background-color: #212121; 
+  background-color: #172337; 
   font-family: 'Inter', sans-serif;
   color: #fff;
   padding: 30px 0 10px;
@@ -24,7 +24,8 @@
 .footer-column h4, .footer-address h4 {
   color: #878787;
   font-size: 12px;
-  margin-bottom: 12px;
+  font-weight: 400;
+  margin-bottom: 8px
 }
 
 .footer-column a {
@@ -34,7 +35,6 @@
   display: block;
   line-height: 18px;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .footer-column a:hover {

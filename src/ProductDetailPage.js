@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
-import { DiCssdeck, DiDart, DiSafari, DiSnapSvg } from 'react-icons/di';
-import { FaKickstarterK } from 'react-icons/fa';
+import { DiCoffeescript, DiCssdeck, DiDart, DiFirebase, DiSafari, DiSnapSvg } from 'react-icons/di';
+import { FaDiceFive, FaKickstarterK } from 'react-icons/fa';
+import { FaD } from 'react-icons/fa6';
+import { FcFilledFilter } from 'react-icons/fc';
 import { GiKitchenKnives } from 'react-icons/gi';
-import { LiaDnaSolid } from 'react-icons/lia';
-import { SiD, SiD3Dotjs, SiDsautomobiles } from 'react-icons/si';
+import { LiaDiceD6Solid, LiaDnaSolid } from 'react-icons/lia';
+import { PiDiceFiveDuotone, PiFloppyDiskFill } from 'react-icons/pi';
+import { RiRadarFill } from 'react-icons/ri';
+import { SiAsahilinux, SiD, SiD3Dotjs, SiDarkreader, SiDsautomobiles, SiElsevier, SiWeb3Dotjs } from 'react-icons/si';
+import { SlSocialFacebook } from 'react-icons/sl';
+import { TbTrack } from 'react-icons/tb';
+import { WiDaySleet } from 'react-icons/wi';
 import { useParams } from 'react-router-dom';
 
 const allProducts = {
     '1': {
         id: '1',
         name: 'REDMI A3X (Midnight Black, 128 GB)',
-        price: '₹6,499',
+        price: '₹6,499',  
         mrp: '₹10,999',
         discount: '40%',
-        rating: 4.1,
+        rating: 4.1,  
         reviews: "7,529",
         questions: "311",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/w/t/c/-original-imah2hfpxtwagduh.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/i/v/m/-original-imah2hfpgcarsaen.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -35,7 +42,7 @@ const allProducts = {
         rating: 4.2,
         reviews: "2,647",
         questions: "148",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/h/g/o/-original-imahb56zdk5ybj9r.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/g/d/1/-original-imahb8fysg9zghye.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -54,7 +61,7 @@ const allProducts = {
         rating: 4.1,
         reviews: "1,72,013",
         questions: "10,902",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/d/e/g/105-single-sim-keypad-mobile-phone-with-wireless-fm-radio-ta-original-imah3kw8zwfwn56h.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/u/v/c/105-single-sim-keypad-mobile-phone-with-wireless-fm-radio-ta-original-imah45y5g5ghhnng.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -71,7 +78,7 @@ const allProducts = {
         rating: 4.3,
         reviews: "2,13,881",
         questions: "10,880",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/r/l/c/-original-imah3xk892aj9gck.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/h/7/s/-original-imah3xk8n93mhrqf.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -90,7 +97,7 @@ const allProducts = {
         rating: 4.2,
         reviews: "11,399",
         questions: "488",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/e/r/f/-original-imah56hkgehywn5b.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/z/o/x/-original-imah59pnud5sv8nh.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -106,10 +113,10 @@ const allProducts = {
         price: '₹7,233',
         mrp: '₹8,999',
         discount: '19%',
-        rating: 4.3,
+        rating: 4.3, 
         reviews: "11.399",
         questions: "488",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/n/r/c/narzo-80-lite-4g-rmx5313-realme-original-imahegxgdvbva7zf.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/j/d/7/narzo-80-lite-4g-rmx5313-realme-original-imahegxgap6faxpj.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -127,7 +134,7 @@ const allProducts = {
         rating: 4.1,
         reviews: "14,636",
         questions: "721",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/7/z/w/-original-imahawgahmkbjxyj.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/r/t/x/-original-imahawgayxpq85wj.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -146,7 +153,7 @@ const allProducts = {
         rating: 4.3,
         reviews: "4,888",
         questions: "446",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/d/n/3/-original-imahezrzhdddaudb.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/2/c/r/-original-imahezrzhzr9pvrn.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -165,7 +172,7 @@ const allProducts = {
         rating: 4.5,
         reviews: "70,252",
         questions: "3,204",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/k/t/x/-original-imahbgpzbumfzkbh.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/i/0/l/-original-imahbfd4eqsjyu76.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -184,7 +191,7 @@ const allProducts = {
         rating: 4.2,
         reviews: "3,267",
         questions: "149",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/p/4/r/-original-imahb56zdgszp7tg.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/t/p/w/-original-imahb8fyayg7gez7.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -203,7 +210,7 @@ const allProducts = {
         rating: 4.2,
         reviews: "1,03,254",
         questions: "4,829",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/o/2/g/-original-imahbr2cz5apcwze.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/k/h/t/-original-imahbr2czsfktdhj.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
@@ -222,14 +229,14 @@ const allProducts = {
         rating: 3.1,
         reviews: "24,038",
         questions: "1,689",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/m/j/a/guru-music-2-b310ed-guru-music-2-samsung-original-imahepqaqpq3dnhg.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/r/g/e/guru-music-2-b310ed-guru-music-2-samsung-original-imahepqae6quyw5b.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
             { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/b/d/v/guru-music-2-b310ed-guru-music-2-samsung-original-imahepqacgbeshyx.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
         ],
-    },
-        '13': {
+    }, 
+    '13': {
         id: '13',
         name: 'HOTLINE TURTLE',
         price: '₹699',
@@ -238,15 +245,13 @@ const allProducts = {
         rating: 3.7,
         reviews: "376",
         questions: "27",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/1/v/i/classic-turtle-classic-turtle-hotline-original-imahb9ghf3g4hc9c.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/t/9/g/classic-turtle-classic-turtle-hotline-original-imahb9ghkf6wupde.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/c/p/f/classic-turtle-classic-turtle-hotline-original-imahb9gh9jzf4fbm.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/p/l/a/classic-turtle-classic-turtle-hotline-original-imahb9ghzh4unvgp.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 4' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/z/p/q/classic-turtle-classic-turtle-hotline-original-imahb9gz8jgyn5y8.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/7/s/a/classic-turtle-classic-turtle-hotline-original-imahb9gzkgg6j3zy.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
         ],
     },
-        '14': {
+    '14': {
         id: '14',
         name: 'Samsung Galaxy S25 Ultra',
         price: '₹1,19,999',
@@ -255,17 +260,15 @@ const allProducts = {
         rating: 4.7,
         reviews: "2,012",
         questions: "222",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/7/n/l/-original-imahgfmzfgdzases.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/x/f/l/-original-imahggexa53xyeq5.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/a/y/m/-original-imahggewgkmpcggq.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/w/7/q/-original-imahggetnje6tbpe.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 4' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/f/j/t/-original-imahggetqzszzxqh.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 5' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/e/q/g/-original-imahgget2pqvf8gq.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 6' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/u/c/7/s24-ultra-sm-s928bzkhinx-samsung-original-imagxy2xmyfzygbc.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/2/7/y/s24-ultra-sm-s928bzkhinx-samsung-original-imagxy2xngg9q39n.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/h/r/m/s24-ultra-sm-s928bzkhinx-samsung-original-imagxy2xj79h59b9.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/8/f/f/s24-ultra-sm-s928bzkhinx-samsung-original-imagxy2x5rzr8v3y.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 4' },
         ],
     },
-        '15': {
+    '15': {
         id: '15',
         name: 'MOTOROLA g35 5G (Midnight Black, 128 GB)',
         price: '₹8,999',
@@ -274,17 +277,15 @@ const allProducts = {
         rating: 4.2,
         reviews: "75,633",
         questions: "5,241",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/z/q/m/g35-5g-pb3h0000in-motorola-original-imah7c6ykgz5rtgv.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/2/i/f/g35-5g-pb3h0000in-motorola-original-imah7c6yxeg3uufu.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/p/e/b/g35-5g-pb3h0000in-motorola-original-imah7c6ysg3uderp.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/n/g/y/g35-5g-pb3h0000in-motorola-original-imah7c6yemwzbqjx.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 4' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/h/l/z/g35-5g-pb3h0000in-motorola-original-imah7c6yhudfwjqy.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 5' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/o/t/u/g35-5g-pb3h0000in-motorola-original-imah7c6y46upakqp.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 6' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/t/b/r/-original-imah7c6ykgz5rtgv.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/g/w/g/-original-imah7c6yz4c8qg6b.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/j/d/b/-original-imah7c6yghr3wzff.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/q/g/q/-original-imah7c6yhz2r4hz7.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 4' },
         ],
     },
-        '16': {
+    '16': {
         id: '16',
         name: 'Google Pixel 10 (Indigo, 256 GB)',
         price: '₹79,999',
@@ -293,30 +294,31 @@ const allProducts = {
         rating: 4.4,
         reviews: "549",
         questions: "52",
-        deliveryDate: '20 Oct',
+        deliveryDate: '20 Oct, Sunday',
         images: [
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/w/b/8/-original-imahfjsf5gxbpfks.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/l/b/1/-original-imahfjsfyzvr8zcz.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/5/a/g/-original-imahfjsfhmf4h9sw.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/q/u/1/-original-imahfjsfy2gga3gx.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 4' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/s/l/u/-original-imahfjsfck6yz73p.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 5' },
-            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/g/f/z/-original-imahfjsfffwgyyhe.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 6' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/n/j/h/-original-imagzy9eyzch56z8.jpeg?q=70&amp;crop=false", alt: 'Main Image' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/9/t/v/pixel-8-pro-ga04574-gb-google-original-imags39b7j22588c.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 2' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/a/r/a/-original-imags39b4f6pydm6.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 3' },
+            { src: "https://rukminim2.flixcart.com/image/128/128/xif0q/mobile/j/j/m/pixel-8-pro-ga04574-gb-google-original-imags39b36q83dsh.jpeg?q=70&amp;crop=false", alt: 'Thumbnail 4' },
         ],
-    },
+    }
 };
 
-
-const ProductImageGallery = ({ images }) => (
+const ProductImageGallery = ({ images, mainImage, setMainImage }) => (
     <div className="product-image-gallery">
         <div className="thumbnail-list">
-            {images.slice(0, 6).map((img, index) => (
-                <div key={index} className="thumbnail-item">
-                    <img src={img.src} alt={`Thumbnail ${index + 1}`} />
-                </div>
-            ))}
+            {images.map((img, index) => {
+                const isActive = img.src === mainImage; 
+
+                return (
+                    <div key={img.src} className={`thumbnail-item ${isActive ? 'active-thumbnail' : ''}`} onClick={() => setMainImage(img.src)} >
+                        <img src={img.src} alt={`Thumbnail ${index + 1}`} />
+                    </div>
+                );
+            })}
         </div>
         <div className="main-image-display">
-            <img src={images[0].src.replace('/128/128/', '/416/416/')} alt={images[0].alt} />
+            <img src={mainImage.replace('/128/128/', '/416/416/')} alt="Main Product Display" />
         </div>
     </div>
 );
@@ -327,25 +329,31 @@ const ProductDetails = ({ data }) => (
         
         <div className="rating-share-section">
             <span className="rating-badge">{data.rating} <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTYuNSA5LjQzOWwtMy42NzQgMi4yMy45NC00LjI2LTMuMjEtMi44ODMgNC4yNTQtLjQwNEw2LjUuMTEybDEuNjkgNC4wMSA0LjI1NC40MDQtMy4yMSAyLjg4Mi45NCA0LjI2eiIvPjwvc3ZnPg==" className="Rza2QY" alt="star"/></span>
-            <span className="review-text">{data.reviews.toLocaleString()} Ratings & {data.questions} Reviews</span>
-            <span className="assured-badge" role="img" aria-label="Flipkart Assured"></span>
+            <span className="review-text">{data.reviews} Ratings & {data.questions} Reviews</span>
+            <span className="assured-badge" role="img" aria-label="Flipkart Assured">
+                <img height="21"src="/images/fa_9e47c1.png" />
+            </span>
             <span className="compare-share-links">| Compare | Share</span>
         </div>
         
         <div className="price-section">
             <span className="current-price">{data.price}</span>
-            <span className="mrp-price">M.R.P. {data.mrp}</span>
+            <span className="mrp-price">{data.mrp}</span>
             <span className="discount-percent">{data.discount} Off</span>
+            <span className="question"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="dhBD+z"><defs><circle id="b" cx="8" cy="8" r="8"></circle><filter id="a" width="130%" height="130%" x="-15%" y="-8.8%" filterUnits="objectBoundingBox"><feMorphology in="SourceAlpha" operator="dilate" radius=".4" result="shadowSpreadOuter1"></feMorphology><feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"></feGaussianBlur><feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite><feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
+                </filter></defs><g fill="none" fillRule="evenodd"> <g transform="translate(2 1)"><use fill="#000" filter="url(#a)" href="#b"></use> <use fill="#FCFCFC" stroke="#000" strokeOpacity=".3" strokeWidth=".8" href="#b"></use> </g><text fill="#1D1D1D" fontFamily="Roboto-Medium, Roboto" fontSize="11" fontWeight="400" opacity=".59" transform="translate(2 1)"><tspan x="6.6" y="12.2">i</tspan></text> </g></svg>
+            </span>
         </div>
 
         <p className="warranty-text">+ ₹75 Protect Promise Fee <a href="#">Learn more</a></p>
-        <p className="delivery-text" dangerouslySetInnerHTML={{ __html: `Secure delivery by **${data.deliveryDate}**` }} />
+        <p className="delivery-text" dangerouslySetInnerHTML={{ __html: `Secure delivery by ${data.deliveryDate}` }} />
 
         <h4 className="offer-heading">Available offers</h4>
         <ul className="offers-list">
-            <li>Bank Offer 5% cashback on Axis Bank Flipkart Debit Card up to ₹750</li>
-            <li>Bank Offer 5% cashback on Flipkart SBI Credit Card up to ₹4,000 per calendar quarter</li>
-            <li>No cost EMI ₹4,000/month. Standard EMI also available <a href="#">View Plans</a></li>
+            <li key="offer-1"><img src="https://rukminim2.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90" width="18" height="18" className="yNKwUY" /><span className="bold">Bank Offer</span> 5% cashback on Axis Bank Flipkart Debit Card up to ₹750<span className="spanned">T&C</span></li>
+            <li key="offer-2"><img src="https://rukminim2.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90" width="18" height="18" className="yNKwUY" /><span className="bold">Bank Offer</span> 5% cashback on Flipkart SBI Credit Card up to ₹4,000 per calendar quarter<span className="spanned">T&C</span></li>
+            <li key="offer-3"><img src="https://rukminim2.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90" width="18" height="18" className="yNKwUY" /><span className="bold">Bank Offer</span>5% cashback on Flipkart Axis Bank Credit Card upto ₹4,000 per statement quarter<span className="spanned">T&C</span></li>
+            <li key="offer-4"><img src="https://rukminim2.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90" width="18" height="18" className="yNKwUY" /><span className="bold">Special Price</span> Get extra ₹5000 off<span className="spanned">T&C</span></li>
         </ul>
         <a href="#" className="view-more-offers">View 4 more offers</a>
 
@@ -353,16 +361,21 @@ const ProductDetails = ({ data }) => (
             <div className="exchange-option">
                 <input type="radio" name="buy_option" id="buy_no_exchange" defaultChecked />
                 <label htmlFor="buy_no_exchange">Buy without Exchange</label>
+                <div className="option-details">
                 <span className="option-price">{data.price}</span>
-            </div>   
+                <p className="pincode-check empty-placeholder">&nbsp;</p>
+            </div>
+        </div>   
             <div className="exchange-option">
                 <input type="radio" name="buy_option" id="buy_with_exchange" />
                 <label htmlFor="buy_with_exchange">Buy with Exchange</label>
+                <div className="option-details">
                 <span className="option-price">up to ₹9,000 off</span>
                 <p className="pincode-check">Enter Pincode to check if exchange is available</p>
             </div>
         </div>
     </div>
+</div>
 );
 
 const ProductActions = () => (
@@ -378,6 +391,12 @@ const ProductActions = () => (
 const ProductDetailPage = () => {
     const { id } = useParams(); 
     const productData = allProducts[id]; 
+
+    const [mainImage, setMainImage] = useState(
+        productData && productData.images.length > 0 
+            ? productData.images[0].src 
+            : '' 
+    );
     
     if (!productData) {
         return <div className="product-detail-page-container">
@@ -416,7 +435,31 @@ const ProductDetailPage = () => {
             display: flex;
             height: 500px; 
         }
-        .thumbnail-list {
+           
+    ul {
+         list-style: none;
+         padding-left: 0;
+    }
+    li {
+         display: flex;
+         align-items: center; 
+         gap: 5px; 
+         margin-top: 12px;
+    }
+    li img {
+         display: block; 
+    }
+    li a {
+         text-decoration: none; 
+    }
+    .bold {
+        color: #212121;
+        font-weight: bold;
+        padding-right: 4px;
+        line-height: 1.43;
+        font-size: 14px;
+    }
+        .thumbnail-list {     
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -437,6 +480,24 @@ const ProductDetailPage = () => {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+        }
+        .active-thumbnail {
+            border: 2px solid var(--primary-blue) !important;
+            padding: 3px; 
+        }
+        .spanned {
+            color: #2874f0;
+            font-weight: 500;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .question {
+           margin: 14px 0 0 8px;
+           cursor: pointer;
+        }
+        .dhBD\+z {
+           height: 18px;
         }
         .main-image-display {
             position: relative;
@@ -491,8 +552,6 @@ const ProductDetailPage = () => {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
             border-bottom: 1px dashed #f0f0f0;
             font-size: 14px;
         }
@@ -508,8 +567,6 @@ const ProductDetailPage = () => {
         }
         .assured-badge {
             width: 77px;
-            height: 15px;
-            background-image: url('https://static-assets-web.flixcart.com/fk-p-s/assets/images/flipkart_assured.svg');
             background-repeat: no-repeat;
             background-size: contain;
         }
@@ -520,7 +577,6 @@ const ProductDetailPage = () => {
         }
         .price-section {
             padding: 10px 0;
-            margin-bottom: 10px;
         }
         .current-price {
             font-size: 32px;
@@ -530,24 +586,33 @@ const ProductDetailPage = () => {
         .mrp-price {
             text-decoration: line-through;
             color: #878787;
-            margin-right: 10px;
         }
         .discount-percent {
-            color: var(--primary-green);
-            font-weight: 600;
+            margin-left: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #388e3c;
+            vertical-align: middle;
         }
-        .warranty-text, .delivery-text, .pincode-check {
+        .warranty-text {
             font-size: 14px;
             margin: 5px 0;
             color: #555;
+            padding-bottom: 4px;
+        }
+        .delivery-text, .pincode-check, .warranty-text {
+            font-size: 14px;
+            margin: 5px 0;
+            color: #000000;
         }
         .warranty-text a, .delivery-text a {
             color: var(--primary-blue);
             text-decoration: none;
+            font-weight: bold;
         }
         .offer-heading {
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 600;   
             margin: 15px 0 10px;
         }
         .offers-list {
@@ -555,54 +620,54 @@ const ProductDetailPage = () => {
             padding: 0;
             font-size: 14px;
         }
-        .offers-list li {
-            margin-bottom: 5px;
-            padding-left: 20px;
-            position: relative;
-        }
-        .offers-list li::before {
-            content: "•";
-            color: var(--primary-green);
-            font-weight: bold;
-            display: inline-block; 
-            width: 1em;
-            margin-left: -1em;
-            position: absolute;
-            left: 0;
-        }
+
         .view-more-offers {
             color: var(--primary-blue);
             font-size: 14px;
+            font-weight: bold;
             text-decoration: none;
             display: block;
             margin-bottom: 20px;
         }
-        .exchange-options {
-            border: 1px solid #f0f0f0;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-        }
-        .exchange-option {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .exchange-option label {
-            flex-grow: 1;
-            font-size: 15px;
-            margin-left: 10px;
-        }
-        .option-price {
-            font-weight: 600;
-            color: var(--dark-text);
-        }
-        .pincode-check {
-            font-size: 12px;
-            color: var(--primary-blue);
-            cursor: pointer;
-            margin-left: 30px;
-        }
+
+.exchange-options {
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.exchange-option {
+    display: flex;
+    align-items: flex-start; 
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+.exchange-option label {
+    flex-grow: 1;
+    font-size: 15px;
+    margin-left: 10px;
+    padding-top: 2px; 
+}
+.option-details {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+}
+.option-price {
+    font-weight: 600; 
+    font-size: 16px;
+    white-space: nowrap; 
+}
+.pincode-check {
+    font-size: 13px;
+    color: #ff6161; 
+    margin: 5px 0 0 0; 
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.empty-placeholder {
+    color: transparent;
+    visibility: hidden; 
+}
         .small-ad-card {
             position: absolute;
             top: 20px;
@@ -616,29 +681,23 @@ const ProductDetailPage = () => {
             object-fit: contain;
         }
     `;
+    
     return (
         <>
             <style>{pageStyles}</style>
-
             <div className="product-detail-page-container">
                 <div className="product-main-content">
                     <div className="product-left-column">
-                        <ProductImageGallery images={productData.images} />
+                        <ProductImageGallery images={productData.images} mainImage={mainImage} setMainImage={setMainImage} />
                         <ProductActions />
                     </div>
 
                     <div className="product-right-column">
                         <ProductDetails data={productData} />
-                        
-                        <div className="small-ad-card">
-                            <img src="https://rukminim2.flixcart.com/fk-p-lockin/100/100/image/c7c728e83b8a3e74.jpeg?q=90" alt="Samsung Ad" />
-                            <p style={{fontSize: '12px', color: '#878787'}}>SAMSUNG Galaxy...</p>
-                        </div>
                     </div>
                 </div>
 
-                <div className="bottom-sections">
-                </div>
+                <div className="bottom-sections"></div>
             </div>
         </>
     );

@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { AiFillAlipaySquare, AiFillCheckSquare, AiFillSketchCircle, AiFillSketchSquare } from 'react-icons/ai';
+import { AiFillAlipaySquare, AiFillAmazonCircle, AiFillCheckSquare, AiFillSketchCircle, AiFillSketchSquare } from 'react-icons/ai';
+import { BsGlobeAsiaAustralia } from 'react-icons/bs';
+import { DiCssdeck, DiSafari } from 'react-icons/di';
 import { FcEmptyFilter } from 'react-icons/fc';
-import { GiDew } from 'react-icons/gi';
-import { LiaAdSolid } from 'react-icons/lia';
-import { RiFeedbackFill } from 'react-icons/ri';
-import { Si2K, SiD, SiD3Dotjs, SiDocsdotrs, SiK3S, SiKakao, SiKasasmart } from 'react-icons/si';
+import { GiDew, GiEvilWings } from 'react-icons/gi';
+import { LiaAdSolid, LiaStarAndCrescentSolid } from 'react-icons/lia';
+import { RiFeedbackFill, RiRadarFill } from 'react-icons/ri';
+import { Si1Dot1Dot1Dot1, Si2K, SiAkasaair, SiD, SiD3Dotjs, SiDocsdotrs, SiK3S, SiKakao, SiKasasmart, SiSass, SiSsrn, SiWwe } from 'react-icons/si';
+import { SlScreenDesktop } from 'react-icons/sl';
+import { WiSnowWind } from 'react-icons/wi';
 import { Link, useNavigate } from 'react-router-dom';
 
 const appStyles = `
@@ -54,7 +58,9 @@ const appStyles = `
         max-width: 1400px;
         margin: 0 auto;
     }
-
+    .logo-section {
+        margin-right: 36px;
+    }
     .logo-section h1 {
         font-size: 24px;
         font-weight: 700;
@@ -70,21 +76,19 @@ const appStyles = `
     }
     
     .search-bar {
-    display: flex;
-    align-items: center; 
-    background-color: #f0f5ff; 
-    border-radius: 8px; 
-    padding: 0 0 0 16px; 
-    height: 40px; 
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
-    flex-grow: 1;
-    max-width: 600px;
-    margin: 0 32px;
+      display: flex;
+      align-items: center; 
+      background-color: #f0f5ff; 
+      border-radius: 8px; 
+      padding: 0 0 0 16px; 
+      height: 40px; 
+      box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+      flex-grow: 1; kk    width: 100%; 
+      margin: 0 32px;
     }
 
-.search-bar .search-icon-wrapper {
+.search-bar .search-icon-wrapper {    
   justify-content: flex-end;
-  height: 40px;
   border-radius: 2px;
   cursor: pointer;
   padding: 8px 8px 8px 12px;     
@@ -96,7 +100,7 @@ const appStyles = `
     padding: 8px 16px 8px 12px; 
     border: none; 
     border-radius: 0 8px 8px 0;
-    font-size: 14px;
+    font-size: 17px;
     background-color: transparent;                  
     outline: none;
     line-height: 24px; 
@@ -127,15 +131,18 @@ const appStyles = `
         color: #172337;
         text-decoration: none;
         font-weight: 500;
-        font-size: 14px;
+        font-size: 16px;
         cursor: pointer;
         transition: color 0.2s;
     }
-    .nav-link:hover {
-        color: #2874f0;
-    }
     .nav-link-cart, .nav-link-login {
         display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav-link-seller {
+        padding: 0 20px;
+        cursor: pointer;
     }
     .nav-link svg {
         width: 20px;
@@ -178,7 +185,6 @@ const appStyles = `
     width: 64px;
     height: 64px;
     object-fit: contain;
-
     display: block; 
     margin: 0 auto; 
     margin-bottom: 4px; 
@@ -186,11 +192,10 @@ const appStyles = `
 
 .category-name {
     font-size: 14px;
-    margin-top: 0; 
-    white-space: normal;
     line-height: 1.2;
+    color: #333;
+    font-weight:600;
 }
-
     /* Main Banner */
     .main-banner-container {
         position: relative;
@@ -211,7 +216,6 @@ const appStyles = `
     overflow: hidden;
     width: 100%;
 }
-
 .slide-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -392,8 +396,9 @@ const appStyles = `
         justify-content: space-between;
         align-items: center;
         border-bottom: 1px solid #eee;
-        padding-bottom: 16px;
-        margin-bottom: 16px;
+        border-width: 0px;
+        min-height: 0px;
+        min-width: 0px;
     }
     .deals-header h2 {
         font-size: 20px;
@@ -444,33 +449,36 @@ const appStyles = `
         margin-bottom: 10px;
     }
     .deal-image {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+       filter: none;
+       opacity: 1;
+       transition: filter 0.5s ease-in-out, opacity 0.5s ease-in-out;
+       width: 100%;
+       margin: auto;
+       display: block;
+       object-fit: contain;
+       aspect-ratio: 1 / 1;
     }
     .deal-name {
         font-size: 14px;
-        font-weight: 600;
-        color: #172337;
-        margin: 0 0 4px 0;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100%;
         line-height: 20px;
         letter-spacing: -.01px;
+        color: #1f1f1f;
         font-family: inter_regular,fallback-inter_regular,Arial,sans-serif;
+        margin: 0;
+        padding: 0;
     }
 .deal-price {
   border-width: 0px;
   box-sizing: border-box;
   display: inline;
   white-space: nowrap;
-  overflow-wrap: normal;   
+  overflow-wrap: normal;
   text-align: center;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin: 0;
+  padding: 0;
 }
     .deal-info {
         font-size: 11px;
@@ -487,10 +495,157 @@ const appStyles = `
         text-align: center;
     }
 
+/* Offer Strip */
+.offer-strip-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url('https://rukminim2.flixcart.com/fk-p-flap/2000/200/image/96645558f3319800.jpg?q=90');
+    background-size: cover;
+    background-position: bottom;
+    padding: 0;
+}
+
+.offer-strip-card {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1; 
+    flex-basis: 25%;
+    flex-shrink: 1; 
+    width: auto; 
+    padding: 0;
+    text-decoration: none;
+    color: var(--dark-text);
+    transition: transform 0.2s;
+}
+
+.offer-strip-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 150px; 
+    margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+    .offer-strip-wrapper {
+        justify-content: flex-start;
+        overflow-x: scroll;
+    }
+    .offer-strip-card {
+        flex-basis: 40%;
+        flex-shrink: 0;
+        min-width: 150px; 
+    }
+}
+
+/* Big Promotional Banner */
+.big-banner-container {
+    max-width: 1400px;
+    margin: 12px auto;
+    padding: 0 16px;
+    position: relative;
+}
+
+.big-banner-content {
+    background-color: transparent; 
+    padding: 0;
+    height: auto; 
+    display: block;
+}
+
+.big-banner-image-wrapper {
+    flex-basis: 50%;
+    height: 100%;
+    position: relative;
+}
+
+.big-banner-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.big-banner-text-area {
+    flex-basis: 50%;
+    padding: 20px 30px;
+    position: relative;
+    z-index: 2; 
+}
+
+.big-banner-text-area h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 4px 0;
+}
+
+.big-banner-text-area h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.big-banner-text-area p {
+    margin: 5px 0 15px 0;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.big-banner-text-area button {
+    background-color: var(--light-text);
+    color: #ff523d;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.big-banner-text-area button:hover {
+    background-color: #eee;
+}
+
+.big-banner-sponsors {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    display: flex;
+    gap: 10px;
+}
+.big-banner-sponsors img {
+    height: 20px;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .big-banner-content {
+        flex-direction: column;
+        height: auto;
+    }
+    .big-banner-image-wrapper {
+        flex-basis: 100%;
+        height: 150px;
+    }
+    .big-banner-text-area {
+        flex-basis: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+    .big-banner-sponsors {
+        right: 10px;
+        top: 10px;
+    }
+}
 /* Directory Section */
 .directory-section {
-    padding: 20px 0;
-    margin: 20px auto;
+    padding: 25px;
+    margin: 0 auto;
     max-width: 1400px;
     border-radius: 0;
     box-shadow: none;
@@ -655,6 +810,16 @@ const smartphoneDeals = [
     { id: 6, name: "Samsung GalaxyA35 5G", price: "Just ₹17,999*", img: "https://rukminim2.flixcart.com/image/96/96/xif0q/mobile/o/j/d/-original-imahgy25zuwqzzye.jpeg?q=90" },
 ];
 
+const topDeals = [
+    { id: 1, name: "Cooling Pads", price: "From ₹599", img: "https://rukminim2.flixcart.com/image/96/96/xif0q/cooling-pad/z/h/d/fksbcpk17-flipkart-smartbuy-original-imagrpra6uudn8xx.jpeg?q=90" },
+    { id: 2, name: "Top Rated Keyboards", price: "From ₹299", img: "https://rukminim2.flixcart.com/image/96/96/kzzw5u80/keyboard/multi-device-keyboard/o/2/d/km3322w-km3322w-keyboard-mouse-combo-anti-fade-spill-resistant-original-imagbvyatqteauf2.jpeg?q=90" },
+    { id: 3, name: "Tablet Cases & Covers", price: "From ₹299", img: "https://rukminim2.flixcart.com/image/96/96/xif0q/cases-covers/flip-cover/d/f/a/recoilcases9feblk-proelite-original-imahggskgh7hbmtd.jpeg?q=90" },
+    { id: 4, name: "Samsung Watch 7", price: "Just ₹13,999*", img: "https://rukminim2.flixcart.com/image/96/96/xif0q/smartwatch/s/d/n/-original-imahcc49mx4png6v.jpeg?q=90" },
+    { id: 5, name: "Premium Smartwatches", price: "From ₹3,099", img: "https://rukminim2.flixcart.com/image/96/96/xif0q/smartwatch/f/5/x/-original-imah4fnggqupasyh.jpeg?q=90" },
+    { id: 6, name: "Women Epilators & Trimmers", price: "From ₹495", img: "https://rukminim2.flixcart.com/image/96/96/xif0q/epilator/y/k/j/7-silk-pil-3-031-epilator-for-long-lasting-hair-removal-from-original-imahag9thpgffqub.jpeg?q=90" },
+    { id: 7, name: "Top Rated Routers", price: "From ₹319", img: "https://rukminim2.flixcart.com/image/96/96/jhjg13k0/router/g/n/n/tp-link-archer-c20-ac-wireless-dual-band-original-imaf5j9whw9bbetb.jpeg?q=90" },
+];
+
 const topAds = [
     {
         img: "https://rukminim2.flixcart.com/fk-p-flap/450/280/image/12a414b8ec3e1de1.jpeg?q=90",
@@ -808,6 +973,16 @@ const bannerImages = [
         src: "https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/1c5655da10ed4f88.jpg?q=90",
         alt: "Flight Offers"
     },
+    {
+        id: 4,
+        src: "https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/3f893004a60d1fbf.jpeg?q=90",
+        alt: "Speakers"
+    },
+    {
+        id: 5,
+        src: "https://rukminim2.flixcart.com/fk-p-flap/1620/270/image/83d1b7da878cab79.jpeg?q=90",
+        alt: "phones"
+    }
 ];
 
 const MainBanner = () => {
@@ -862,6 +1037,66 @@ const MainBanner = () => {
     );
 };
 
+const DealCard = ({ deal }) => (
+    <Link to={`/product/${deal.id}`} className="deal-card"> 
+        <div className="deal-image-container">
+            <img src={deal.img} alt={deal.name} className="deal-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/100x100/CCCCCC/333333?text=Deal'; }} />
+        </div>
+        <p className="deal-name" title={deal.name}>{deal.name}</p>
+        <p className="deal-price">{deal.price}</p>
+        <p className="deal-info"></p> 
+    </Link>
+);
+
+const DealsSection = () => {
+    const dealsToShow = smartphoneDeals.slice(0, 5);
+
+    return (
+        <section className="deals-section">
+            <div className="deals-header">
+                <h2>Best deals on smartphones</h2>
+            </div>
+            <div className="deals-list">
+                {dealsToShow.map((deal) => (
+                    <DealCard key={deal.id} deal={deal} />   
+                ))}
+
+                <div className="view-more-placeholder">
+                   <img src="https://rukminim2.flixcart.com/fk-p-flap/530/810/image/11dd6ca78faaf848.jpeg?q=90" alt="Image" className=""
+  style={{
+    filter: 'none',
+    opacity: 1, 
+    transition: 'filter 0.5s ease-in-out, opacity 0.5s ease-in-out',
+    width: '100%',
+    margin: 'auto', 
+    display: 'block',
+    objectFit: 'cover', 
+    aspectRatio: '28 / 43' 
+  }}
+  aria-busy="false" data-highres-loaded="true" loading="eager" fetchpriority="auto" srcSet="https://rukminim2.flixcart.com/fk-p-flap/160/250/image/11dd6ca78faaf848.jpeg?q=80 1x, https://rukminim2.flixcart.com/fk-p-flap/320/500/image/11dd6ca78faaf848.jpeg?q=60 2x" />
+                </div>
+            </div>
+        </section>
+    );
+};
+
+const DealsSection1 = () => {
+    const dealsToShow = topDeals.slice(0, 6);
+
+    return (    
+        <section className="deals-section">
+            <div className="deals-header">
+                <h2>Price drop on Electronics</h2>
+            </div>
+            <div className="deals-list">
+                {dealsToShow.map((deal) => (
+                    <DealCard key={deal.id} deal={deal} />
+                ))}
+            </div>
+        </section>
+    );
+};
+
 const AdCard = ({ ad, type }) => {
     const isTopAd = type === 'top';
     const wrapperClass = isTopAd ? 'top-ad-card' : `bottom-ad-card ${ad.specialClass || ''}`;
@@ -899,6 +1134,7 @@ const AdCard = ({ ad, type }) => {
     );
 };
 
+
 const TopAdGrid = () => (
     <section className="ad-grid-container">
         <div className="ad-grid top-ad-grid">
@@ -913,55 +1149,61 @@ const BottomAdGrid = () => (
     <section className="ad-grid-container">
         <div className="ad-grid bottom-ad-grid">
             {bottomAds.map((ad, index) => (
-                <AdCard key={index} ad={ad} type="bottom" />
+                <AdCard key={index} ad={ad} type="bottom" />  
             ))}
         </div>
     </section>
 );
 
-const DealCard = ({ deal }) => (
-    <Link to={`/product/${deal.id}`} className="deal-card"> 
-        <div className="deal-image-container">
-            <img src={deal.img} alt={deal.name} className="deal-image" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/100x100/CCCCCC/333333?text=Deal'; }} />
+const offerStripData = [
+    {
+        img: "https://rukminim2.flixcart.com/fk-p-flap/800/330/image/94c069313e3a5797.jpg?q=90",
+        alt: "Gas Stove"
+    },
+    {
+        img: "https://rukminim2.flixcart.com/fk-p-flap/800/330/image/7725cf7ee792d188.jpg?q=90",
+        alt: "Diyas"
+    },
+    {
+        img: "https://rukminim2.flixcart.com/fk-p-flap/800/330/image/cfc5d6c591424417.jpg?q=90",
+        alt: "Blankets"
+    },
+    {
+        img: "https://rukminim2.flixcart.com/fk-p-flap/800/330/image/d409371db6921c5f.jpg?q=90",
+        alt: "Tools"
+    },
+];
+
+const OfferStrip = ({ data }) => (
+    <div className="offer-strip-container">
+        <div className="offer-strip-wrapper">
+            {data.map((item, index) => (
+                <a href="#" className="offer-strip-card" key={index}>
+                    <img src={item.img} alt={item.alt} className="offer-strip-img" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/100x100/CCCCCC/333333?text=Offer'; }} />
+                </a>
+            ))}
         </div>
-        <p className="deal-name" title={deal.name}>{deal.name}</p>
-        <p className="deal-price">{deal.price}</p>
-        <p className="deal-info"></p> 
-    </Link>
+    </div>
 );
-
-const DealsSection = () => {
-    const dealsToShow = smartphoneDeals.slice(0, 5);
-
-    return (
-        <section className="deals-section">
-            <div className="deals-header">
-                <h2>Best deals on smartphones</h2>
-                <button className="view-all-btn">VIEW ALL</button>
-            </div>
-            <div className="deals-list">
-                {dealsToShow.map((deal) => (
-                    <DealCard key={deal.id} deal={deal} />
-                ))}
-
-                <div className="view-more-placeholder">
-                   <img src="https://rukminim2.flixcart.com/fk-p-flap/530/810/image/11dd6ca78faaf848.jpeg?q=90" alt="Image" className=""
-  style={{
-    filter: 'none',
-    opacity: 1, 
-    transition: 'filter 0.5s ease-in-out, opacity 0.5s ease-in-out',
-    width: '100%',
-    margin: 'auto', 
-    display: 'block',
-    objectFit: 'cover', 
-    aspectRatio: '28 / 43' 
-  }}
-  aria-busy="false" data-highres-loaded="true" loading="eager" fetchpriority="auto" srcSet="https://rukminim2.flixcart.com/fk-p-flap/160/250/image/11dd6ca78faaf848.jpeg?q=80 1x, https://rukminim2.flixcart.com/fk-p-flap/320/500/image/11dd6ca78faaf848.jpeg?q=60 2x" />
-                </div>
-            </div>
-        </section>
-    );
+const bigBannerData = {
+    img: "https://rukminim2.flixcart.com/fk-p-flap/1600/350/image/fd2145dd37a22555.jpg?q=90",
 };
+
+const BigBanner = ({ data }) => (
+    <div className="big-banner-container">
+        <a href="#" style={{ display: 'block' }}>
+            <img src={data.img} alt="Big Bang Diwali Banner" className="full-width-banner-img"
+                style={{
+                    width: '100%',
+                    borderRadius: '8px', 
+                    display: 'block',
+                    objectFit: 'cover',
+                }}
+                onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/1400x350/ff523d/fff?text=BIG+BANNER'; }}
+            />
+        </a>
+    </div>
+);
 
 const DirectorySection = () => (
     <section className="directory-section">
@@ -979,6 +1221,7 @@ const DirectorySection = () => (
     </section>
 );
 
+
 const FlipkartLandingPage = () => {
     return (
         <>
@@ -991,11 +1234,13 @@ const FlipkartLandingPage = () => {
                 <main className="content-area">
                     <CategoryMenu />
                     <MainBanner />  
-                    <TopAdGrid /><BottomAdGrid />
                     <DealsSection />
+                    <TopAdGrid /><BottomAdGrid />
+                    <DealsSection1 />
+                    <OfferStrip data={offerStripData} />
+                    <BigBanner data={bigBannerData} />
                 </main>
                 <DirectorySection />
-                {/* <Footer /> */}
             </div>
         </>
     );

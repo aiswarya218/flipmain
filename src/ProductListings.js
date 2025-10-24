@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DiCssdeck, DiDart } from 'react-icons/di';
+import { DiCssdeck, DiDart, DiLaravel, DiSafari } from 'react-icons/di';
 import { FcFilledFilter } from 'react-icons/fc';
 import { GiBigGear, GiElectricalResistance, GiFrogFoot, GiGhost, GiGoldNuggets } from 'react-icons/gi';
 import { GrGallery } from 'react-icons/gr';
@@ -8,6 +8,8 @@ import { PiYarnThin } from 'react-icons/pi';
 import { RiRestTimeFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import './ProductListings.css';   
+import { SiDlib } from 'react-icons/si';
+import { BiSolidCloudDownload } from 'react-icons/bi';
 
 const productData = [
     { 
@@ -393,6 +395,113 @@ const productData = [
     }
 ];
 
+// --- In a separate file (e.g., navData.js) or at the top of your Navbar component file ---
+// const NAV_DATA = [
+//     { 
+//         name: "Electronics", 
+//         link: "/electronics",
+//         columns: [
+//             {
+//                 title: "Mobiles",
+//                 items: ["All Mobiles", "Smartphones", "Feature Phones", "Refurbished Phones"],
+//             },
+//             {
+//                 title: "Laptops",
+//                 items: ["Gaming Laptops", "Thin and Light", "2-in-1 Laptops", "MacBooks"],  
+//             },
+//             {
+//                 title: "Computer Peripherals",
+//                 items: ["Printers", "Monitors", "External Hard Disks", "Pen Drives"],
+//             },
+//             {
+//                 title: "Accessories",
+//                 items: ["Headphones & Headsets", "Power Banks", "Smart Watches", "Memory Cards"],
+//             },
+//         ]
+//     },
+//     { 
+//         name: "TVs & Appliances", 
+//         link: "/tvs-appliances",
+//         columns: [
+//             {
+//                 title: "Television",
+//                 items: ["New Launches", "Smart & Ultra HD", "Mobiles", "Mobile Accessories"],
+//             },
+//             {
+//                 title: "Washing Machine",
+//                 items: ["Fully Automatic Front Load", "Fully Automatic Top Load", "Semi Automatic Top Load"],
+//             },
+//             {
+//                 title: "Air Conditioners",
+//                 items: ["Inverter AC", "Split ACs", "Window ACs"],
+//             },
+//             {
+//                 title: "Kitchen Appliances",
+//                 items: ["Oven Toaster Grills (OTG)", "Juicer/Mixer/Grinder", "Electric Kettle", "Induction Cooktops"],
+//             },
+//             {
+//                 title: "Small Home Appliances",
+//                 items: ["Water Purifiers", "Irons", "Air Coolers", "Vacuum Cleaners"],
+//             },
+//             {
+//                 title: "Buying Guides",
+//                 items: ["Televisions", "Washing Machines", "Air Conditioners"],
+//             },
+//         ]
+//     },
+//     { name: "Men", link: "/men", columns: [] },
+//     { name: "Women", link: "/women", columns: [] },
+//     { name: "Baby & Kids", link: "/baby-kids", columns: [] },
+//     { name: "Home & Furniture", link: "/home-furniture", columns: [] },
+//     { name: "Sports, Books & More", link: "/sports-books-more", columns: [] },
+//     { name: "Flights", link: "/flights", columns: [] },
+//     { name: "Offer Zone", link: "/offer-zone", columns: [] },
+// ];
+
+// const MegaMenu = ({ navData }) => {
+//     const [activeMenu, setActiveMenu] = useState(null);
+
+//     return (
+//         <nav className="navbar-categories">
+//             {/* ✅ FIX: Use the prop 'navData' which was passed from the parent component */}
+//             {navData.map((navItem, index) => (
+//                 <div
+//                     key={index}
+//                     className="nav-item-container"
+//                     onMouseEnter={() => setActiveMenu(navItem.name)}
+//                     onMouseLeave={() => setActiveMenu(null)}
+//                 >
+//                     <Link to={navItem.link} className="nav-item-link"> 
+//                         {navItem.name}
+//                     </Link>
+                    
+//                     {/* Mega Menu Panel */}
+//                     {navItem.columns && navItem.columns.length > 0 && activeMenu === navItem.name && (
+//                         <div className="mega-menu-dropdown">
+//                             <div className="mega-menu-content">
+//                                 {navItem.columns.map((column, colIndex) => (
+//                                     <div key={colIndex} className="menu-column">
+//                                         <div className="column-title">{column.title}</div>
+//                                         <ul className="column-list">
+//                                             {column.items.map((item, itemIndex) => (
+//                                                 <li key={itemIndex} className="column-item">
+//                                                     <Link to={`/${item.toLowerCase().replace(/ /g, '-')}`}>
+//                                                         {item}
+//                                                     </Link>
+//                                                 </li>
+//                                             ))}
+//                                         </ul>
+//                                     </div>
+//                                 ))}
+//                             </div>
+//                         </div>
+//                     )}
+//                 </div>
+//             ))}
+//         </nav>
+//     );
+// };
+
 const ProductFilters = ({ filters, setFilters }) => {
     const uniqueBrands = ['Apple', 'Samsung', 'Motorola', 'Google', 'REDMI', 'POCO', 'realme', 'vivo', 'Nokia', 'HOTLINE'].sort();
 
@@ -412,13 +521,26 @@ const ProductFilters = ({ filters, setFilters }) => {
         }));
     };
 
+
     return (
         <div className="filter-sidebar">
             <h3>Filters</h3>
 
+            <div className="filter-group categories-group">
+                <div className="filter-title">CATEGORIES</div>
+                <div className="category-links">
+                    <div style={{ color: '#878787', fontSize: '14px', marginBottom: '5px' }}>
+                        <span style={{ marginRight: '5px' }}>&lt;</span> Mobiles &amp; Accessories
+                    </div>
+                    <div style={{ fontWeight: 'bold', fontSize: '14px' }}>
+                        Mobiles
+                    </div>
+                </div>
+            </div>
+            
             <div className="filter-group">
-                <h4 className="filter-title">Price</h4>
-                <div className="price-range">
+                <div className="filter-title">PRICE</div>  
+                <div className="price-range">         
                     <input type="number" name="minPrice" placeholder="Min" className="price-input" onChange={handlePriceChange} />
                     <span className="price-separator">to</span>
                     <input type="number" name="maxPrice" placeholder="30000+" className="price-input" onChange={handlePriceChange} />
@@ -426,8 +548,8 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Brand</h4>
-                {uniqueBrands.slice(0, 5).map(brand => ( 
+                <div className="filter-title">BRAND</div>
+                {uniqueBrands.slice(0, 5).map(brand => (   
                     <label key={brand} className="filter-option">
                         <input type="checkbox" className="checkbox" checked={filters.brands.includes(brand)} onChange={() => handleBrandChange(brand)}/>
                         {brand}
@@ -441,7 +563,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Network Type</h4>
+                <div className="filter-title">NETWORK TYPE</div>
                 {['5G', '4G', '3G'].map(network => (
                     <label key={network} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -451,7 +573,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Customer Ratings</h4>
+                <div className="filter-title">CUSTOMER RATINGS</div>
                 {['4★ & above', '3★ & above'].map(ratings => (
                     <label key={ratings} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -461,7 +583,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">GST Invoice Available</h4>
+                <div className="filter-title">GST INVOICE AVAILABLE</div>
                 {['GST Invoice Available'].map(invoice => (
                     <label key={invoice} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -471,8 +593,8 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
              <div className="filter-group">
-                <h4 className="filter-title">RAM</h4>
-                {['4 GB', '3 GB', '6 GB', '8 GB and Above'].map(ram => (
+                <div className="filter-title">RAM</div>
+                {['4 GB', '3 GB', '6 GB', '8 GB and Above'].map(ram => ( 
                     <label key={ram} className="filter-option">
                         <input type="checkbox" className="checkbox" />
                         {ram}
@@ -481,7 +603,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
              <div className="filter-group">
-                <h4 className="filter-title">Internal Storage</h4>
+                <div className="filter-title">INTERNAL STORAGE</div>
                 {['256 GB & Above', '128 - 255.9 GB', '64 - 127.9 GB'].map(storage => (
                     <label key={storage} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -491,7 +613,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Battery Capacity</h4>
+                <div className="filter-title">BATTERY CAPACITY</div>
                 {['4000 - 4999 mAh', '5000 - 5999 mAh', '5000 mAh Above'].map(battery => (
                     <label key={battery} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -501,8 +623,8 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Screen Size</h4>
-                {['6.4 inch & Above', '6 inch above', '5,7 - 5.9 inch'].map(screen => (
+                <div className="filter-title">SCREEN SIZE</div>
+                {['6.4 inch & Above', '6 inch above', '5.7 - 5.9 inch'].map(screen => (
                     <label key={screen} className="filter-option">
                         <input type="checkbox" className="checkbox" />
                         {screen}
@@ -511,17 +633,17 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Primary Camera</h4>
+                <div className="filter-title">PRIMARY CAMERA</div>
                 {['5 - 7.9 MP', 'Below 5 MP', '21 MP Above', '48 - 63.9 MP'].map(primary => (
                     <label key={primary} className="filter-option">
                         <input type="checkbox" className="checkbox" />
-                         <span className="filter-text">{primary}</span>
+                        {primary}
                     </label>
                 ))}
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Secondary Camera</h4>
+                <div className="filter-title">SECONDARY CAMERA</div>
                 {['12 - 12.9 MP', '16 - 20.9 MP', '21 MP Above', '5 - 7.9 MP'].map(secondary => (
                     <label key={secondary} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -531,7 +653,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Processor Brand</h4>
+                <div className="filter-title">PROCESSOR BRAND</div>
                 {['AMD', 'Apple', 'ARM'].map(processor => (
                     <label key={processor} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -541,7 +663,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Speciality</h4>
+                <div className="filter-title">SPECIALITY</div>
                 {['Big Storage', 'Higher Performance', 'Long-lasting Battery'].map(speciality => (
                     <label key={speciality} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -551,7 +673,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Resolution Type</h4>
+                <div className="filter-title">RESOLUTION TYPE</div>
                 {['Full HD', 'Full HD+', 'FWVGA'].map(resolution => (
                     <label key={resolution} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -561,7 +683,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Operating System</h4>
+                <div className="filter-title">OPERATING SYSTEM</div>
                 {['Android', 'Blackberry', 'iOS'].map(operating => (
                     <label key={operating} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -571,7 +693,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Sim Type</h4>
+                <div className="filter-title">SIM TYPE</div>
                 {['Dual Sim', 'Four Sim', 'Single Sim'].map(sim => (
                     <label key={sim} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -581,7 +703,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Offers</h4>
+                <div className="filter-title">OFFERS</div>
                 {['Special Price', 'Buy More, Save More', 'No Cost EMI'].map(offers => (
                     <label key={offers} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -591,7 +713,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Features</h4>
+                <div className="filter-title">FEATURES</div>
                 {['WiFi', 'NFC', 'FM Player'].map(features => (
                     <label key={features} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -601,7 +723,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">TYPE</h4>
+                <div className="filter-title">TYPE</div>
                 {['Smart Phones', 'Feature Phones'].map(type => (
                     <label key={type} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -611,7 +733,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Number of cores</h4>
+                <div className="filter-title">NUMBER OF CORES</div>
                 {['Dual Core', 'Hexa Core', 'Octa Core'].map(cores => (
                     <label key={cores} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -621,7 +743,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Availability</h4>
+                <div className="filter-title">AVAILABILITY</div>
                 {['Exclude Out of Stock'].map(availability => (
                     <label key={availability} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -631,7 +753,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Discount</h4>
+                <div className="filter-title">DISCOUNT</div>
                 {['50% or more', '40% or more', '20% or more', '10% or more'].map(discount => (
                     <label key={discount} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -641,7 +763,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Operating System Version Name</h4>
+                <div className="filter-title">OPERATING SYSTEM VERSION NAME</div>
                 {['Android Q', 'Belle', 'Eclair'].map(version => (
                     <label key={version} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -651,7 +773,7 @@ const ProductFilters = ({ filters, setFilters }) => {
             </div>
 
             <div className="filter-group">
-                <h4 className="filter-title">Clock Speed</h4>
+                <div className="filter-title">CLOCK SPEED</div>
                 {['1.5-1.9 GHz', '2-2.5 GHz', '2.5 & Above'].map(clock => (
                     <label key={clock} className="filter-option">
                         <input type="checkbox" className="checkbox" />
@@ -671,7 +793,6 @@ const ProductItem = ({ product }) => {
     const ASSURED_BADGE_URL = "https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_9e47c1.png";
 
     const specs = product.specifications;
-    
     const specsList = [
         specs.ram,
         specs.storage_expandable, 
@@ -685,10 +806,13 @@ const ProductItem = ({ product }) => {
   <div className="product-item">
     <div className="product-image-container">
         <img src={product.image} alt={product.product_name} className="product-image" />
-  
+
+        <span className="wishlist-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="N1bADF" width="16" height="16" viewBox="0 0 20 16"><path d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" fill="#c7c7c7" class="x1UMqG" stroke="#FFF" fill-rule="evenodd" opacity=".9"></path></svg>
+        </span>
         <label className="add-to-compare-label">
             <input type="checkbox" className="add-to-compare-checkbox" />
-            Add to Compare
+            <span className="compare">Add to Compare</span>
         </label>
     </div>
     <div className="product-details">
@@ -773,13 +897,9 @@ const ProductListings = ({ mobilePhones, totalResults, sortBy, setSortBy }) => {
             </div>
             
             <div className="sorting-options">
-                <span style={{color: '#212121', fontWeight: '500'}}>Sort By</span> 
+                <span style={{color: '#212121', fontWeight: 'bold'}}>Sort By</span> 
                 {sortOptions.map((option) => (
-                    <span 
-                        key={option.value}
-                        onClick={() => setSortBy(option.value)}
-                        className={sortBy === option.value ? 'sort-link-active' : 'sort-link'}
-                    >
+                    <span key={option.value} onClick={() => setSortBy(option.value)} className={sortBy === option.value ? 'sort-link-active' : 'sort-link'} >
                         {option.label}
                     </span>
                 ))}
@@ -830,6 +950,7 @@ const SearchResultsPage = () => {
     return (
         <div className="page-layout">
             <ProductFilters filters={filters} setFilters={setFilters} />
+                {/* <MegaMenu navData={NAV_DATA} /> */}
             <div className="listings-area">
                 <ProductListings mobilePhones={displayedMobilePhones} totalResults={totalResults} sortBy={sortBy} setSortBy={setSortBy} />
             </div>
