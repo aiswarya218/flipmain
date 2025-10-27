@@ -496,11 +496,11 @@ const ProductDetailPage = () => {
            margin: 14px 0 0 8px;
            cursor: pointer;
         }
-        .dhBD\+z {
+        .dhBD\+z {  
            height: 18px;
         }
         .main-image-display {
-            position: relative;
+            position: relative;    
             flex-grow: 1;
             display: flex;
             justify-content: center;
@@ -620,7 +620,6 @@ const ProductDetailPage = () => {
             padding: 0;
             font-size: 14px;
         }
-
         .view-more-offers {
             color: var(--primary-blue);
             font-size: 14px;
@@ -629,7 +628,6 @@ const ProductDetailPage = () => {
             display: block;
             margin-bottom: 20px;
         }
-
 .exchange-options {
     border: 1px solid #f0f0f0;
     border-radius: 4px;
@@ -681,7 +679,7 @@ const ProductDetailPage = () => {
             object-fit: contain;
         }
     `;
-    
+
     return (
         <>
             <style>{pageStyles}</style>

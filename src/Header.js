@@ -89,9 +89,6 @@ const menuData = [
       }
     ]
   },
-  // ------------------------------------------------------------------
-  //  TVs & Appliances Data (from Screenshot 2)
-  // ------------------------------------------------------------------
   {
     title: "TVs & Appliances",
     category: "tvs-appliances",
@@ -160,9 +157,6 @@ const menuData = [
       }
     ]
   },
-  // ------------------------------------------------------------------
-  //  Men Data (from Screenshot 1)
-  // ------------------------------------------------------------------
   { 
     title: "Men", 
     category: "men", 
@@ -364,7 +358,7 @@ const navbarStyles = `
         align-items: center;
         justify-content: center;
         height: 56px;
-        padding: 0 16px;
+        padding: 0 180px;
     }
     .header-wrapper {
         max-width: 1400px;
@@ -589,9 +583,6 @@ export default Header;
 //       }
 //     ]
 //   },
-//   // ------------------------------------------------------------------
-//   //  TVs & Appliances Data (from Screenshot 2)
-//   // ------------------------------------------------------------------
 //   {
 //     title: "TVs & Appliances",
 //     category: "tvs-appliances",
@@ -660,9 +651,6 @@ export default Header;
 //       }
 //     ]
 //   },
-//   // ------------------------------------------------------------------
-//   //  Men Data (from Screenshot 1)
-//   // ------------------------------------------------------------------
 //   { 
 //     title: "Men", 
 //     category: "men", 
@@ -745,9 +733,6 @@ export default Header;
 // import React from 'react';
 // import './Header.css'; // <-- Import the CSS file here
 
-// // -------------------------------------------------------------
-// // DATA STRUCTURE (for the Mega-Menu)
-// // -------------------------------------------------------------
 // const menuData = [
 //   // ... (Full data structure from the previous answer)
 //   {
@@ -829,7 +814,6 @@ export default Header;
 //     title: "TVs & Appliances",
 //     category: "tvs-appliances",
 //     columns: [
-//         // (Abbreviated data for brevity)
 //     ]
 //   },
 //   { title: "Men", category: "men", columns: [] },
@@ -840,10 +824,6 @@ export default Header;
 //   { title: "Flights", category: "flights", hasDropdown: false, noIcon: true },
 //   { title: "Offer Zone", category: "offers", hasDropdown: false, noIcon: true }
 // ];
-
-// // -------------------------------------------------------------
-// // REUSABLE SUB-COMPONENT FOR DROPDOWN RENDERING
-// // -------------------------------------------------------------
 // const DropdownColumn = ({ column }) => (
 //   <div className={`dropdown-column ${column.isFeatured ? 'featured-column' : ''}`}>
 //     {column.heading && (
@@ -859,7 +839,6 @@ export default Header;
 //         ))}
 //       </ul>
 //     )}
-
 //     {column.subGroups && column.subGroups.map((sub, subIndex) => (
 //       <React.Fragment key={subIndex}>
 //         {sub.heading && <h4>{sub.heading}</h4>}
@@ -874,11 +853,6 @@ export default Header;
 //     ))}
 //   </div>
 // );
-
-
-// // -------------------------------------------------------------
-// // MAIN HEADER COMPONENT
-// // -------------------------------------------------------------
 // const Header = () => {
 //   return (
 //     <div className="container-wrapper">
@@ -919,15 +893,12 @@ export default Header;
 //             <li key={index} className={menuItem.columns && menuItem.columns.length > 0 ? "has-dropdown" : ""}>
 //               <a href="#" data-category={menuItem.category}>
 //                 {menuItem.title}
-//                 {/* Conditional rendering for the down arrow icon */}
 //                 {
 //                   (menuItem.columns && menuItem.columns.length > 0) || (menuItem.hasDropdown === false && menuItem.noIcon === undefined) ? 
 //                   <i className="fas fa-chevron-down custom-icon-size"></i> :
 //                   null
 //                 }
 //               </a>
-              
-//               {/* Conditional rendering for the dropdown menu */}
 //               {menuItem.columns && menuItem.columns.length > 0 && (
 //                 <div className="dropdown-menu">
 //                   {menuItem.columns.map((column, colIndex) => (

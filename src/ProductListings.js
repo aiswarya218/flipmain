@@ -1,16 +1,21 @@
-import React, { useState } from 'react';
-import { DiCssdeck, DiDart, DiLaravel, DiSafari } from 'react-icons/di';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { DiCss3Full, DiCssdeck, DiDart, DiLaravel, DiSafari } from 'react-icons/di';
 import { FcFilledFilter } from 'react-icons/fc';
 import { GiBigGear, GiElectricalResistance, GiFrogFoot, GiGhost, GiGoldNuggets } from 'react-icons/gi';
 import { GrGallery } from 'react-icons/gr';
 import { HiHashtag } from 'react-icons/hi';
-import { PiYarnThin } from 'react-icons/pi';
+import { PiStarOfDavidFill, PiYarnThin } from 'react-icons/pi';
 import { RiRestTimeFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import './ProductListings.css';   
+import './ProductListings.css';
 import { SiDlib } from 'react-icons/si';
 import { BiSolidCloudDownload } from 'react-icons/bi';
+import { FaKickstarterK } from 'react-icons/fa';
+import { LuLamp, LuLayoutList, LuVolleyball } from 'react-icons/lu';
+import { FaZ } from 'react-icons/fa6';
 
+const MIN_VALUE = 0; 
+const MAX_VALUE = 30000;
 const productData = [
     { 
         "id": 1, 
@@ -129,378 +134,420 @@ const productData = [
             "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In-Box Accessories" }, 
         "offers": { 
             "exchange_offer": "Upto <b>₹4,150</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" }
+            "bank_offer": "Bank Offer" },
+       },
+       {
+      "id": 6,
+      "product_name": "realme Narzo 80 Lite 4G (Beach Gold, 64 GB)",
+      "image": "./images/narzo-80-lite-4g-rmx5313-realme-original-imahegxgdvbva7zf.jpeg",
+      "product_price": {
+        "current_price": "₹7,233",
+        "original_price": "₹8,999",
+        "discount_percentage": "19% off"
+      },
+      "rating": {
+        "score": 4.3,
+        "total_ratings": "11,399 Ratings",
+        "total_reviews": "488 Reviews"
+      },
+      "specifications": {
+        "ram": "4 GB RAM | 64 GB ROM",
+        "display": "17.12 cm (6.74 inch) HD+ Display",
+        "rear_camera": "13MP Rear Camera",
+        "battery": "6300 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year brand Warranty"
+      },
+      "offers": {
+        "exchange_offer": "Upto <b>₹3,950</b> Off on Exchange",
+        "bank_offer": "Bank Offer"
+      }
     },
-    { 
-        "id": 6, 
-        "product_name": "realme Narzo 80 Lite 4G (Beach Gold, 64 GB)", 
-        "image": "./images/narzo-80-lite-4g-rmx5313-realme-original-imahegxgdvbva7zf.jpeg", 
-        "product_price": { 
-            "current_price": "₹7,233", 
-            "original_price": "₹8,999", 
-            "discount_percentage": "19% off" }, 
-        "rating": { 
-            "score": 4.3, 
-            "total_ratings": "11,399 Ratings", 
-            "total_reviews": "488 Reviews" }, 
-        "specifications": { 
-            "ram": "4 GB RAM | 64 GB ROM", 
-            "display": "17.12 cm (6.74 inch) HD+ Display", 
-            "rear_camera": "13MP Rear Camera", 
-            "battery": "6300 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "1 Year brand Warranty" }, 
-        "offers": { 
-            "exchange_offer": "Upto <b>₹3,950</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" } 
+    {
+      "id": 7,
+      "product_name": "POCO C71 (Power Black, 128 GB)",
+      "image": "./images/-original-imahawgahmkbjxyj.jpeg",
+      "product_price": {
+        "current_price": "₹6,999",
+        "original_price": "₹9,999",
+        "discount_percentage": "30% off"
+      },
+      "rating": {
+        "score": 4.1,
+        "total_ratings": "14,636 Ratings",
+        "total_reviews": "721 Reviews"
+      },
+      "specifications": {
+        "ram": "6 GB RAM | 128 GB ROM",
+        "storage_expandable": "Expandable Upto 2 TB",
+        "display": "17.48 cm (6.88 inch) HD+ Display",
+        "rear_camera": "32MP Rear Camera | 8MP Front Camera",
+        "battery": "5200 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories"
+      },
+      "offers": {
+        "exchange_offer": "Upto <b>₹4,700</b> Off on Exchange",
+        "bank_offer": "Bank Offer"
+      }
     },
-    { 
-        "id": 7, 
-        "product_name": "POCO C71 (Power Black, 128 GB)", 
-        "image": "./images/-original-imahawgahmkbjxyj.jpeg", 
-        "product_price": { 
-            "current_price": "₹6,999", 
-            "original_price": "₹9,999", 
-            "discount_percentage": "30% off" }, 
-        "rating": { 
-            "score": 4.1, 
-            "total_ratings": "14,636 Ratings", 
-            "total_reviews": "721 Reviews" }, 
-        "specifications": { 
-            "ram": "6 GB RAM | 128 GB ROM", 
-            "storage_expandable": "Expandable Upto 2 TB", 
-            "display": "17.48 cm (6.88 inch) HD+ Display", 
-            "rear_camera": "32MP Rear Camera | 8MP Front Camera", 
-            "battery": "5200 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories" }, 
-        "offers": { 
-            "exchange_offer": "Upto <b>₹4,700</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" } 
+    {
+      "id": 8,
+      "product_name": "realme 15 Pro 5G(Flowing Silver, 256 GB)",
+      "image": "./images/vicky.webp",
+      "product_price": {
+        "current_price": "₹33,999",
+        "original_price": "₹37,999",
+        "discount_percentage": "10% off"
+      },
+      "rating": {
+        "score": 4.3,
+        "total_ratings": "4,888 Ratings",
+        "total_reviews": "446 Reviews"
+      },
+      "specifications": {
+        "ram": "8 GB RAM | 256 GB ROM",
+        "display": "17.27 cm (6.8 inch) Display",
+        "rear_camera": "50MP + 50MP | 50MP Front Camera",
+        "battery": "7000 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories"
+      },
+      "offers": {
+        "phones_left": "Only 1 left",
+        "bank_offer": "Bank Offer"
+      }
     },
-    { 
-        "id": 8,
-        "product_name": "realme 15 Pro 5G(Flowing Silver, 256 GB)", 
-        "image": "./images/vicky.webp", 
-        "product_price": { 
-            "current_price": "₹33,999", 
-            "original_price": "₹37,999", 
-            "discount_percentage": "10% off" }, 
-        "rating": { 
-            "score": 4.3, 
-            "total_ratings": "4,888 Ratings", 
-            "total_reviews": "446 Reviews" },
-        "specifications": { 
-            "ram": "8 GB RAM | 256 GB ROM", 
-            "display": "17.27 cm (6.8 inch) Display", 
-            "rear_camera": "50MP + 50MP | 50MP Front Camera", 
-            "battery": "7000 mAh Battery" },
-        "warranty": { 
-            "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories" }, 
-        "offers": { 
-            "phones_left": "Only 1 left", 
-            "bank_offer": "Bank Offer" } 
+    {
+      "id": 9,
+      "product_name": "vivo T4 5G (Phantom Grey, 128 GB)",
+      "image": "./images/vivo.webp",
+      "product_price": {
+        "current_price": "₹20,999",
+        "original_price": "₹25,999",
+        "discount_percentage": "19% off"
+      },
+      "rating": {
+        "score": 4.5,
+        "total_ratings": "70,252 Ratings",
+        "total_reviews": "3,204 Reviews"
+      },
+      "specifications": {
+        "ram": "8 GB RAM | 128 GB ROM",
+        "storage_expandable": "Expandable Upto 2 TB",
+        "display": "17.28 cm (6.77 inch) HD+ Display",
+        "rear_camera": "50MP (OIS) + 2MP | 32MP Front Camera",
+        "battery": "7300 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories"
+      },
+      "offers": {
+        "exchange_offer": "Upto <b>₹16,100</b> Off on Exchange",
+        "bank_offer": "Bank Offer"
+      }
     },
-    { 
-        "id": 9, 
-        "product_name": "vivo T4 5G (Phantom Grey, 128 GB)", 
-        "image": "./images/vivo.webp", 
-        "product_price": { 
-            "current_price": "₹20,999", 
-            "original_price": "₹25,999", 
-            "discount_percentage": "19% off" }, 
-        "rating": { 
-            "score": 4.5, 
-            "total_ratings": "70,252 Ratings", 
-            "total_reviews": "3,204 Reviews" }, 
-        "specifications": { 
-            "ram": "8 GB RAM | 128 GB ROM", 
-            "storage_expandable": "Expandable Upto 2 TB", 
-            "display": "17.28 cm (6.77 inch) HD+ Display", 
-            "rear_camera": "50MP (OIS) + 2MP | 32MP Front Camera", 
-            "battery": "7300 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories" }, 
-        "offers": { 
-            "exchange_offer": "Upto <b>₹16,100</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" } },
-    { 
-        "id": 10, 
-        "product_name": "REDMI A5 (Just Black, 64 GB)", 
-        "image": "./images/-original-imahb56zdgszp7tg.jpeg", 
-        "product_price": { 
-            "current_price": "₹6,499", 
-            "original_price": "₹8,999", 
-            "discount_percentage": "27% off" }, 
-        "rating": { 
-            "score": 4.2, 
-            "total_ratings": "3,267 Ratings", 
-            "total_reviews": "149 Reviews" }, 
-        "specifications": { 
-            "ram": "3 GB RAM | 64 GB ROM", 
-            "storage_expandable": "Expandable Upto 2 TB", 
-            "display": "17.48 cm (6.88 inch) HD+ Display", 
-            "rear_camera": "32MP Rear Camera | 8MP Front Camera", 
-            "battery": "5200 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories" }, 
-        "offers": { 
-            "exchange_offer": "Upto <b>₹4,350</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" } 
+    {
+      "id": 10,
+      "product_name": "REDMI A5 (Just Black, 64 GB)",
+      "image": "./images/-original-imahb56zdgszp7tg.jpeg",
+      "product_price": {
+        "current_price": "₹6,499",
+        "original_price": "₹8,999",
+        "discount_percentage": "27% off"
+      },
+      "rating": {
+        "score": 4.2,
+        "total_ratings": "3,267 Ratings",
+        "total_reviews": "149 Reviews"
+      },
+      "specifications": {
+        "ram": "3 GB RAM | 64 GB ROM",
+        "storage_expandable": "Expandable Upto 2 TB",
+        "display": "17.48 cm (6.88 inch) HD+ Display",
+        "rear_camera": "32MP Rear Camera | 8MP Front Camera",
+        "battery": "5200 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories"
+      },
+      "offers": {
+        "exchange_offer": "Upto <b>₹4,350</b> Off on Exchange",
+        "bank_offer": "Bank Offer"
+      }
     },
-    { 
-        "id": 11, 
-        "product_name": "POCO C75 5G (Aqua Bliss, 64 GB)", 
-        "image": "./images/-original-imahbr2cz5apcwze (1).jpeg", 
-        "product_price": { 
-            "current_price": "₹7,699", 
-            "original_price": "₹10,999", 
-            "discount_percentage": "30% off" }, 
-        "rating": { 
-            "score": 4.2, 
-            "total_ratings": "1,03,254 Ratings", 
-            "total_reviews": "4,829 Reviews" }, 
-        "specifications": { 
-            "ram": "3 GB RAM | 64 GB ROM", 
-            "storage_expandable": "Expandable Upto 1 TB", 
-            "display": "17.48 cm (6.88 inch) HD+ Display", 
-            "rear_camera": "50MP Rear Camera | 5MP Front Camera", 
-            "battery": "5160 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories" }, 
-        "offers": { 
-            "exchange_offer": "Upto <b>₹5200</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" } 
+    {
+      "id": 11,
+      "product_name": "POCO C75 5G (Aqua Bliss, 64 GB)",
+      "image": "./images/-original-imahbr2cz5apcwze (1).jpeg",
+      "product_price": {
+        "current_price": "₹7,699",
+        "original_price": "₹10,999",
+        "discount_percentage": "30% off"
+      },
+      "rating": {
+        "score": 4.2,
+        "total_ratings": "1,03,254 Ratings",
+        "total_reviews": "4,829 Reviews"
+      },
+      "specifications": {
+        "ram": "3 GB RAM | 64 GB ROM",
+        "storage_expandable": "Expandable Upto 1 TB",
+        "display": "17.48 cm (6.88 inch) HD+ Display",
+        "rear_camera": "50MP Rear Camera | 5MP Front Camera",
+        "battery": "5160 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories"
+      },
+      "offers": {
+        "exchange_offer": "Upto <b>₹5200</b> Off on Exchange",
+        "bank_offer": "Bank Offer"
+      }
     },
-    { 
-        "id": 12, 
-        "product_name": "Samsung Guru Music 2 B310ED", 
-        "image": "./images/guru-music-2-b310ed-guru-music-2-samsung-original-imahfyupkv.jpeg", 
-        "product_price": { 
-            "current_price": "₹898", 
-            "original_price": "₹1,999", 
-            "discount_percentage": "55% off" }, 
-        "rating": { 
-            "score": 3.1, 
-            "total_ratings": "24,038 Ratings", 
-            "total_reviews": "1,689 Reviews" }, 
-        "specifications": { 
-            "ram": "32 MB RAM | 32 MB ROM", 
-            "storage_expandable": "Expandable Upto 100 MB", 
-            "display": "4.57 cm (1.8 inch) VGA Display", 
-            "rear_camera": "0MP Rear Camera | 0MP Front Camera", 
-            "battery": "800 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "1 Year Seller Warranty" }, 
-        "offers": { 
-            "exchange_offer": "Upto <b>₹3,950</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" } },
-    { 
-        "id": 13, 
-        "product_name": "HOTLINE TURTLE", 
-        "image": "https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/1/v/i/classic-turtle-classic-turtle-hotline-original-imahb9ghf3g4hc9c.jpeg?q=70&amp;amp;crop=false", 
-        "product_price": { 
-            "current_price": "₹699", 
-            "original_price": "₹999", 
-            "discount_percentage": "30% off" }, 
-        "rating": { 
-            "score": 3.7, 
-            "total_ratings": "376 Ratings", 
-            "total_reviews": "27 Reviews" }, 
-        "specifications": {
-            "ram": "32 MB RAM | 32 MB ROM", 
-            "storage_expandable": "Expandable Upto 16 GB", 
-            "display": "4.57 cm (1.8 inch) NA Display", 
-            "rear_camera": "1.3MP + 0MP Rear Camera | 0MP Front Camera", 
-            "battery": "1100 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "3 Months domestic Warranty" }, 
-        "offers": { 
-            "phones_left": "Only 1 left", 
-            "bank_offer": "Bank Offer" } 
+    {
+      "id": 12,
+      "product_name": "Samsung Guru Music 2 B310ED",
+      "image": "./images/guru-music-2-b310ed-guru-music-2-samsung-original-imahfyupkv.jpeg",
+      "product_price": {
+        "current_price": "₹898",
+        "original_price": "₹1,999",
+        "discount_percentage": "55% off"
+      },
+      "rating": {
+        "score": 3.1,
+        "total_ratings": "24,038 Ratings",
+        "total_reviews": "1,689 Reviews"
+      },
+      "specifications": {
+        "ram": "32 MB RAM | 32 MB ROM",
+        "storage_expandable": "Expandable Upto 100 MB",
+        "display": "4.57 cm (1.8 inch) VGA Display",
+        "rear_camera": "0MP Rear Camera | 0MP Front Camera",
+        "battery": "800 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year Seller Warranty"
+      },
+      "offers": {
+        "exchange_offer": "Upto <b>₹3,950</b> Off on Exchange",
+        "bank_offer": "Bank Offer"
+      }
     },
-    { 
-        "id": 14, 
-        "product_name": "Samsung Galaxy S25 Ultra", 
-        "image": "./images/ultra.webp", 
-        "product_price": { 
-            "current_price": "₹1,19,999", 
-            "original_price": "₹1,29,999", 
-            "discount_percentage": "7% off" }, 
-        "rating": { 
-            "score": 4.7, 
-            "total_ratings": "2,012 Ratings", 
-            "total_reviews": "222 Reviews" }, 
-        "specifications": { 
-            "ram": "12 GB RAM | 256 GB ROM", 
-            "storage_expandable": "Expandable Upto 1 TB", 
-            "display": "17.53 cm (6.9 inch) Quad HD+ Display", 
-            "rear_camera": "200MP + 50MP + 50MP + 10MP Rear Camera", 
-            "front_camera": "12MP Front Camera", 
-            "battery": "5000 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories" }, 
-        "offers": { 
-            "exchange_offer": "Upto <b>₹41,350</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" } 
+    {
+      "id": 13,
+      "product_name": "HOTLINE TURTLE",
+      "image": "./images/classic-turtle-classic-turtle-hotline-original-imahb9gz8jgyn.jpeg",
+      "product_price": {
+        "current_price": "₹699",
+        "original_price": "₹999",
+        "discount_percentage": "30% off"
+      },
+      "rating": {
+        "score": 3.7,
+        "total_ratings": "376 Ratings",
+        "total_reviews": "27 Reviews"
+      },
+      "specifications": {
+        "ram": "32 MB RAM | 32 MB ROM",
+        "storage_expandable": "Expandable Upto 16 GB",
+        "display": "4.57 cm (1.8 inch) NA Display",
+        "rear_camera": "1.3MP + 0MP Rear Camera | 0MP Front Camera",
+        "battery": "1100 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "3 Months domestic Warranty"
+      },
+      "offers": {
+        "phones_left": "Only 1 left",
+        "bank_offer": "Bank Offer"
+      }
     },
-    { 
-        "id": 15, 
-        "product_name": "MOTOROLA g35 5G (Midnight Black, 128 GB)", 
-        "image": "./images/g35-5g-pb3h0000in-motorola-original-imah7c6ykgz5rtgv.jpeg", 
-        "product_price": { 
-            "current_price": "₹8,999", 
-            "original_price": "₹12,499", 
-            "discount_percentage": "28% off" }, 
-        "rating": { 
-            "score": 4.2, 
-            "total_ratings": "75,633 Ratings", 
-            "total_reviews": "5,241 Reviews" }, 
-        "specifications": { 
-            "ram": "4 GB RAM | 128 GB ROM", 
-            "storage_expandable": "Expandable Upto 1 TB", 
-            "display": "17.07 cm (6.72 inch) Full HD+ Display", 
-            "rear_camera": "50MP + 8MP Rear Camera", 
-            "front_camera": "16MP Front Camera", 
-            "battery": "5000 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories" }, 
-        "offers": { 
-            "exchange_offer": "Upto <b>₹6,150</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" } 
+    {
+      "id": 14,
+      "product_name": "Samsung Galaxy S25 Ultra",
+      "image": "./images/ultra.webp",
+      "product_price": {
+        "current_price": "₹1,19,999",
+        "original_price": "₹1,29,999",
+        "discount_percentage": "7% off"
+      },
+      "rating": {
+        "score": 4.7,
+        "total_ratings": "2,012 Ratings",
+        "total_reviews": "222 Reviews"
+      },
+      "specifications": {
+        "ram": "12 GB RAM | 256 GB ROM",
+        "storage_expandable": "Expandable Upto 1 TB",
+        "display": "17.53 cm (6.9 inch) Quad HD+ Display",
+        "rear_camera": "200MP + 50MP + 50MP + 10MP Rear Camera",
+        "front_camera": "12MP Front Camera",
+        "battery": "5000 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories"
+      },
+      "offers": {
+        "exchange_offer": "Upto <b>₹41,350</b> Off on Exchange",
+        "bank_offer": "Bank Offer"
+      }
     },
-    { 
-        "id": 16, 
-        "product_name": "Google Pixel 10 (Indigo, 256 GB)", 
-        "image": "./images/google.webp", 
-        "product_price": { 
-            "current_price": "₹79,999", 
-            "original_price": "₹1,10,999", 
-            "discount_percentage": "40% off" }, 
-        "rating": { 
-            "score": 4.4, 
-            "total_ratings": "549 Ratings", 
-            "total_reviews": "52 Reviews" }, 
-        "specifications": { 
-            "ram": "12 GB RAM | 256 GB ROM", 
-            "storage_expandable": "Expandable Upto 1 TB", 
-            "display": "16.0 cm (6.3 inch) HD+ Display", 
-            "rear_camera": "48MP + 13MP | 10.5MP Front Camera", 
-            "battery": "4970 mAh Battery" }, 
-        "warranty": { 
-            "phone_warranty": "1 Year Domestic Warranty" }, 
-        "offers": { 
-            "exchange_offer": "Upto <b>₹53,650</b> Off on Exchange", 
-            "bank_offer": "Bank Offer" } 
+    {
+      "id": 15,
+      "product_name": "MOTOROLA g35 5G (Midnight Black, 128 GB)",
+      "image": "./images/g35-5g-pb3h0000in-motorola-original-imah7c6ykgz5rtgv.jpeg",
+      "product_price": {
+        "current_price": "₹8,999",
+        "original_price": "₹12,499",
+        "discount_percentage": "28% off"
+      },
+      "rating": {
+        "score": 4.2,
+        "total_ratings": "75,633 Ratings",
+        "total_reviews": "5,241 Reviews"
+      },
+      "specifications": {
+        "ram": "4 GB RAM | 128 GB ROM",
+        "storage_expandable": "Expandable Upto 1 TB",
+        "display": "17.07 cm (6.72 inch) Full HD+ Display",
+        "rear_camera": "50MP + 8MP Rear Camera",
+        "front_camera": "16MP Front Camera",
+        "battery": "5000 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year Manufacturer Warranty and 6 Months Warranty for In the Box Accessories"
+      },
+      "offers": {
+        "exchange_offer": "Upto <b>₹6,150</b> Off on Exchange",
+        "bank_offer": "Bank Offer"
+      }
+    },
+    {
+      "id": 16,
+      "product_name": "Google Pixel 10 (Indigo, 256 GB)",
+      "image": "./images/google.webp",
+      "product_price": {
+        "current_price": "₹79,999",
+        "original_price": "₹1,10,999",
+        "discount_percentage": "40% off"
+      },
+      "rating": {
+        "score": 4.4,
+        "total_ratings": "549 Ratings",
+        "total_reviews": "52 Reviews"
+      },
+      "specifications": {
+        "ram": "12 GB RAM | 256 GB ROM",
+        "storage_expandable": "Expandable Upto 1 TB",
+        "display": "16.0 cm (6.3 inch) HD+ Display",
+        "rear_camera": "48MP + 13MP | 10.5MP Front Camera",
+        "battery": "4970 mAh Battery"
+      },
+      "warranty": {
+        "phone_warranty": "1 Year Domestic Warranty"
+      },
+      "offers": {
+        "exchange_offer": "Upto <b>₹53,650</b> Off on Exchange",
+        "bank_offer": "Bank Offer"
+      }
     }
 ];
 
-// --- In a separate file (e.g., navData.js) or at the top of your Navbar component file ---
-// const NAV_DATA = [
-//     { 
-//         name: "Electronics", 
-//         link: "/electronics",
-//         columns: [
-//             {
-//                 title: "Mobiles",
-//                 items: ["All Mobiles", "Smartphones", "Feature Phones", "Refurbished Phones"],
-//             },
-//             {
-//                 title: "Laptops",
-//                 items: ["Gaming Laptops", "Thin and Light", "2-in-1 Laptops", "MacBooks"],  
-//             },
-//             {
-//                 title: "Computer Peripherals",
-//                 items: ["Printers", "Monitors", "External Hard Disks", "Pen Drives"],
-//             },
-//             {
-//                 title: "Accessories",
-//                 items: ["Headphones & Headsets", "Power Banks", "Smart Watches", "Memory Cards"],
-//             },
-//         ]
-//     },
-//     { 
-//         name: "TVs & Appliances", 
-//         link: "/tvs-appliances",
-//         columns: [
-//             {
-//                 title: "Television",
-//                 items: ["New Launches", "Smart & Ultra HD", "Mobiles", "Mobile Accessories"],
-//             },
-//             {
-//                 title: "Washing Machine",
-//                 items: ["Fully Automatic Front Load", "Fully Automatic Top Load", "Semi Automatic Top Load"],
-//             },
-//             {
-//                 title: "Air Conditioners",
-//                 items: ["Inverter AC", "Split ACs", "Window ACs"],
-//             },
-//             {
-//                 title: "Kitchen Appliances",
-//                 items: ["Oven Toaster Grills (OTG)", "Juicer/Mixer/Grinder", "Electric Kettle", "Induction Cooktops"],
-//             },
-//             {
-//                 title: "Small Home Appliances",
-//                 items: ["Water Purifiers", "Irons", "Air Coolers", "Vacuum Cleaners"],
-//             },
-//             {
-//                 title: "Buying Guides",
-//                 items: ["Televisions", "Washing Machines", "Air Conditioners"],
-//             },
-//         ]
-//     },
-//     { name: "Men", link: "/men", columns: [] },
-//     { name: "Women", link: "/women", columns: [] },
-//     { name: "Baby & Kids", link: "/baby-kids", columns: [] },
-//     { name: "Home & Furniture", link: "/home-furniture", columns: [] },
-//     { name: "Sports, Books & More", link: "/sports-books-more", columns: [] },
-//     { name: "Flights", link: "/flights", columns: [] },
-//     { name: "Offer Zone", link: "/offer-zone", columns: [] },
-// ];
+const priceOptions = [
+    { value: 10000, label: '₹10000' },
+    { value: 15000, label: '₹15000' },
+    { value: 20000, label: '₹20000' },
+    { value: 30000, label: '₹30000' },
+];
 
-// const MegaMenu = ({ navData }) => {
-//     const [activeMenu, setActiveMenu] = useState(null);
+const PriceFilter = ({ filters, setFilters }) => { 
+    const minPrice = filters.minPrice;
+    const maxPrice = filters.maxPrice;
 
-//     return (
-//         <nav className="navbar-categories">
-//             {/* ✅ FIX: Use the prop 'navData' which was passed from the parent component */}
-//             {navData.map((navItem, index) => (
-//                 <div
-//                     key={index}
-//                     className="nav-item-container"
-//                     onMouseEnter={() => setActiveMenu(navItem.name)}
-//                     onMouseLeave={() => setActiveMenu(null)}
-//                 >
-//                     <Link to={navItem.link} className="nav-item-link"> 
-//                         {navItem.name}
-//                     </Link>
-                    
-//                     {/* Mega Menu Panel */}
-//                     {navItem.columns && navItem.columns.length > 0 && activeMenu === navItem.name && (
-//                         <div className="mega-menu-dropdown">
-//                             <div className="mega-menu-content">
-//                                 {navItem.columns.map((column, colIndex) => (
-//                                     <div key={colIndex} className="menu-column">
-//                                         <div className="column-title">{column.title}</div>
-//                                         <ul className="column-list">
-//                                             {column.items.map((item, itemIndex) => (
-//                                                 <li key={itemIndex} className="column-item">
-//                                                     <Link to={`/${item.toLowerCase().replace(/ /g, '-')}`}>
-//                                                         {item}
-//                                                     </Link>
-//                                                 </li>
-//                                             ))}
-//                                         </ul>
-//                                     </div>
-//                                 ))}
-//                             </div>
-//                         </div>
-//                     )}
-//                 </div>
-//             ))}
-//         </nav>
-//     );
-// };
+    const handleMinChange = useCallback((event) => {
+        const newMin = Number(event.target.value);
+        if (newMin < maxPrice) {
+            setFilters(prev => ({ ...prev, minPrice: newMin })); 
+        } else {
+            alert(`Minimum price must be less than ₹${maxPrice}`);
+            event.target.value = minPrice; 
+        }
+    }, [maxPrice, minPrice, setFilters]);
+
+    const handleMaxChange = useCallback((event) => {
+        const newMax = Number(event.target.value);
+        if (newMax > minPrice || newMax === MAX_VALUE) {
+            setFilters(prev => ({ ...prev, maxPrice: newMax }));
+        } else {
+            alert(`Maximum price must be greater than ₹${minPrice}`);
+            event.target.value = maxPrice; 
+        }
+    }, [minPrice, maxPrice, setFilters]);
+
+    const minDropdownOptions = useMemo(() => ([
+        { value: MIN_VALUE, label: 'Min', disabled: true }, 
+        ...priceOptions.filter(opt => opt.value < MAX_VALUE) 
+    ]), []);
+
+    const maxDropdownOptions = useMemo(() => ([
+        ...priceOptions.filter(opt => opt.value > MIN_VALUE),
+        { value: MAX_VALUE + 1, label: `₹${MAX_VALUE}+` } 
+    ]), []);
+
+return (
+        <div className="filter-sidebar">
+            <div className="price-filter-section">
+                <div className="filter-header">
+                    <span className="header-text">PRICE</span>
+                </div>
+
+                <div className="price-slider-container">
+                    <div className="custom-slider-track">
+                        <div className="slider-active-range" style={{ 
+                            left: `${(minPrice / MAX_VALUE) * 100}%`, 
+                            right: `${100 - (maxPrice / MAX_VALUE) * 100}%` 
+                        }}></div> 
+                        <div className="slider-thumb" style={{ left: `${(minPrice / MAX_VALUE) * 100}%` }}></div>
+                        <div className="slider-thumb max-thumb" style={{ left: `${(maxPrice / MAX_VALUE) * 100}%` }}></div>
+                    </div>
+
+                    <div className="slider-marks">
+                        {[...Array(7)].map((_, index) => (
+                            <span key={index} className="mark"></span>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="price-dropdowns">
+                    <div className="dropdown-wrapper">
+                        <select className="price-select min-select" value={minPrice} onChange={handleMinChange}>
+                            {minDropdownOptions.map((option) => (
+                                <option key={option.value} value={option.value} disabled={option.disabled}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <span className="to-text">to</span>
+
+                    <div className="dropdown-wrapper">
+                        <select className="price-select max-select" value={maxPrice} onChange={handleMaxChange} >
+                            {maxDropdownOptions.map((option) => (
+                                <option key={option.value} value={option.value} >
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const ProductFilters = ({ filters, setFilters }) => {
     const uniqueBrands = ['Apple', 'Samsung', 'Motorola', 'Google', 'REDMI', 'POCO', 'realme', 'vivo', 'Nokia', 'HOTLINE'].sort();
@@ -513,14 +560,6 @@ const ProductFilters = ({ filters, setFilters }) => {
             return { ...prev, brands: newBrands };
         });
     };
-
-    const handlePriceChange = (e) => {
-        setFilters(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
-    };
-
 
     return (
         <div className="filter-sidebar">
@@ -537,16 +576,9 @@ const ProductFilters = ({ filters, setFilters }) => {
                     </div>
                 </div>
             </div>
+       
+            <PriceFilter filters={filters} setFilters={setFilters} />
             
-            <div className="filter-group">
-                <div className="filter-title">PRICE</div>  
-                <div className="price-range">         
-                    <input type="number" name="minPrice" placeholder="Min" className="price-input" onChange={handlePriceChange} />
-                    <span className="price-separator">to</span>
-                    <input type="number" name="maxPrice" placeholder="30000+" className="price-input" onChange={handlePriceChange} />
-                </div>
-            </div>
-
             <div className="filter-group">
                 <div className="filter-title">BRAND</div>
                 {uniqueBrands.slice(0, 5).map(brand => (   
@@ -670,108 +702,8 @@ const ProductFilters = ({ filters, setFilters }) => {
                         {speciality}
                     </label>
                 ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">RESOLUTION TYPE</div>
-                {['Full HD', 'Full HD+', 'FWVGA'].map(resolution => (
-                    <label key={resolution} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {resolution}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">OPERATING SYSTEM</div>
-                {['Android', 'Blackberry', 'iOS'].map(operating => (
-                    <label key={operating} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {operating}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">SIM TYPE</div>
-                {['Dual Sim', 'Four Sim', 'Single Sim'].map(sim => (
-                    <label key={sim} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {sim}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">OFFERS</div>
-                {['Special Price', 'Buy More, Save More', 'No Cost EMI'].map(offers => (
-                    <label key={offers} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {offers}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">FEATURES</div>
-                {['WiFi', 'NFC', 'FM Player'].map(features => (
-                    <label key={features} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {features}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">TYPE</div>
-                {['Smart Phones', 'Feature Phones'].map(type => (
-                    <label key={type} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {type}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">NUMBER OF CORES</div>
-                {['Dual Core', 'Hexa Core', 'Octa Core'].map(cores => (
-                    <label key={cores} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {cores}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">AVAILABILITY</div>
-                {['Exclude Out of Stock'].map(availability => (
-                    <label key={availability} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {availability}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">DISCOUNT</div>
-                {['50% or more', '40% or more', '20% or more', '10% or more'].map(discount => (
-                    <label key={discount} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {discount}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">OPERATING SYSTEM VERSION NAME</div>
-                {['Android Q', 'Belle', 'Eclair'].map(version => (
-                    <label key={version} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {version}
-                    </label>
-                ))}
-            </div>
-
+            </div>  
+            
             <div className="filter-group">
                 <div className="filter-title">CLOCK SPEED</div>
                 {['1.5-1.9 GHz', '2-2.5 GHz', '2.5 & Above'].map(clock => (
@@ -803,71 +735,69 @@ const ProductItem = ({ product }) => {
     ].filter(Boolean);
 
     return (
-  <div className="product-item">
-    <div className="product-image-container">
-        <img src={product.image} alt={product.product_name} className="product-image" />
+        <div className="product-item">
+            <div className="product-image-container">
+                <img src={product.image} alt={product.product_name} className="product-image" />
 
-        <span className="wishlist-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" class="N1bADF" width="16" height="16" viewBox="0 0 20 16"><path d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.95 1c1.566 0 3.069.746 4.05 1.915C10.981 1.745 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" fill="#c7c7c7" class="x1UMqG" stroke="#FFF" fill-rule="evenodd" opacity=".9"></path></svg>
-        </span>
-        <label className="add-to-compare-label">
-            <input type="checkbox" className="add-to-compare-checkbox" />
-            <span className="compare">Add to Compare</span>
-        </label>
-    </div>
-    <div className="product-details">
-        <div className="product-info-primary">
-            <Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }} >
-                <h3 className="product-name">
-                    {product.product_name}
-                </h3>
-            </Link>
-
-            <div className="rating-container">
-                <span className="rating-score">
-                    {product.rating.score}
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMiI+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTYuNSA5LjQzOWwtMy42NzQgMi4yMy45NC00LjI2LTMuMjEtMi44ODMgNC4yNTQtLjQwNEw2LjUuMTEybDEuNjkgNC4wMSA0LjI1NC40MDQtMy4yMSAyLjg4Mi45NCA0LjI2eiIvPjwvc3ZnPg==" className="Rza2QY" alt="Star"></img>
+                <span className="wishlist-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="N1bADF" width="16" height="16" viewBox="0 0 20 16"><path d="M8.695 16.682C4.06 12.382 1 9.536 1 6.065 1 3.219 3.178 1 5.45 12.484 1 14.05 1 16.822 1 19 3.22 19 6.065c0 3.471-3.06 6.316-7.695 10.617L10 17.897l-1.305-1.215z" fill="#c7c7c7" className="x1UMqG" stroke="#FFF" fillRule="evenodd" opacity=".9"></path></svg>
                 </span>
-                <span className="rating-text">
-                    {product.rating.total_ratings} &amp; {product.rating.total_reviews}
-                </span>
+                <label className="add-to-compare-label">
+                    <input type="checkbox" className="add-to-compare-checkbox" />
+                    <span className="compare">Add to Compare</span>
+                </label>
             </div>
+            <div className="product-details">
+                <div className="product-info-primary">
+                    <Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }} >
+                        <h3 className="product-name">
+                            {product.product_name}
+                        </h3>
+                    </Link>
+                    <div className="rating-container">
+                        <span className="rating-score">
+                            {product.rating.score}      
+                        </span>
+                        <span className="rating-text">
+                            {product.rating.total_ratings} &amp; {product.rating.total_reviews}
+                        </span>
+                    </div>
 
-            <ul className="product-specs">
-                {specsList.map((spec, index) => (
-                    <li key={index} className="product-spec-item">{spec}</li>
-                ))}
-            </ul>
-        </div>
-        <div className="product-pricing">
-            <div className="price-and-details-container">
-                <div className="price-and-badge-container">
-                    <div className="current-price">{price.current_price}</div>
-                    {isAssured && (
-                        <img src={ASSURED_BADGE_URL} alt="F-Assured" className="assured-badge-image" />
+                    <ul className="product-specs">
+                        {specsList.map((spec, index) => (
+                            <li key={index} className="product-spec-item">{spec}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="product-pricing">
+                    <div className="price-and-details-container">
+                        <div className="price-and-badge-container">
+                            <div className="current-price">{price?.current_price}</div>
+                            {isAssured && (
+                                <img src={ASSURED_BADGE_URL} alt="F-Assured" className="assured-badge-image" />
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="price-details">
+                        <span className="original-price">
+                            {price?.original_price}
+                        </span>
+                        <span className="discount-percentage">
+                            {price?.discount_percentage}
+                        </span>
+                    </div>
+        
+                    {product.offers.exchange_offer && (
+                        <p className="offer-text"
+                            dangerouslySetInnerHTML={{ __html: product.offers.exchange_offer  }}/>
+                    )}
+                    {product.offers.bank_offer && (
+                        <p className="offer-text1">{product.offers.bank_offer}</p>
                     )}
                 </div>
             </div>
-
-                <div className="price-details">
-                    <span className="original-price">
-                        {price.original_price}
-                    </span>
-                    <span className="discount-percentage">
-                        {price.discount_percentage}
-                    </span>
-            </div>
-  
-            {product.offers.exchange_offer && (
-                <p className="offer-text"
-                    dangerouslySetInnerHTML={{ __html: product.offers.exchange_offer  }}/>
-            )}
-            {product.offers.bank_offer && (
-                <p className="offer-text1">{product.offers.bank_offer}</p>
-            )}
         </div>
-    </div>
-</div>
     );
 };
 
@@ -915,8 +845,8 @@ const ProductListings = ({ mobilePhones, totalResults, sortBy, setSortBy }) => {
 const SearchResultsPage = () => {
     const [filters, setFilters] = useState({
         brands: [],
-        minPrice: '',
-        maxPrice: '30000+',
+        minPrice: MIN_VALUE, 
+        maxPrice: MAX_VALUE, 
     });
 
     const [sortBy, setSortBy] = useState('RELEVANCE');
@@ -928,29 +858,41 @@ const SearchResultsPage = () => {
         return parseFloat(price) || 0;
     };
     
-    const sortedMobilePhones = [...allMobilePhones].sort((a, b) => {
-        const aPriceKey = a.price ? 'price' : 'product_price';
-        const bPriceKey = b.price ? 'price' : 'product_price';
+    const displayedMobilePhones = useMemo(() => {
+        const filtered = allMobilePhones.filter(product => {
+            const priceKey = product.price ? 'price' : 'product_price';
+            const currentPriceString = product[priceKey]?.current_price;
+            const numericPrice = getNumericPrice(currentPriceString);
+            
+            const passesPriceFilter = true;
 
-        switch (sortBy) {
-            case 'PRICE_ASC':
-                return getNumericPrice(a[aPriceKey]?.current_price) - getNumericPrice(b[bPriceKey]?.current_price);
-            case 'PRICE_DESC':
-                return getNumericPrice(b[bPriceKey]?.current_price) - getNumericPrice(a[aPriceKey]?.current_price);
-            case 'POPULARITY':
-                return b.rating.score - a.rating.score;
-            case 'NEWEST':
-            default:
-                return 0; 
-        }
-    });
+            const passesBrandFilter = filters.brands.length === 0 || 
+                                      filters.brands.some(brand => product.product_name.toLowerCase().includes(brand.toLowerCase()));
+            return passesPriceFilter && passesBrandFilter;
+        });
 
-    const displayedMobilePhones = sortedMobilePhones;
+        return filtered.sort((a, b) => {
+            const aPriceKey = a.price ? 'price' : 'product_price';
+            const bPriceKey = b.price ? 'price' : 'product_price';
+
+            switch (sortBy) {
+                case 'PRICE_ASC': 
+                    return getNumericPrice(a[aPriceKey]?.current_price) - getNumericPrice(b[bPriceKey]?.current_price);
+                case 'PRICE_DESC':
+                    return getNumericPrice(b[bPriceKey]?.current_price) - getNumericPrice(a[aPriceKey]?.current_price); 
+                case 'POPULARITY':
+                    return b.rating.score - a.rating.score;
+                case 'NEWEST':
+                case 'RELEVANCE':
+                default:
+                    return 0; 
+            }
+        });
+    }, [allMobilePhones, filters, sortBy]); 
 
     return (
         <div className="page-layout">
             <ProductFilters filters={filters} setFilters={setFilters} />
-                {/* <MegaMenu navData={NAV_DATA} /> */}
             <div className="listings-area">
                 <ProductListings mobilePhones={displayedMobilePhones} totalResults={totalResults} sortBy={sortBy} setSortBy={setSortBy} />
             </div>

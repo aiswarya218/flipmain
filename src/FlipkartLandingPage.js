@@ -230,7 +230,7 @@ const appStyles = `
     object-fit: cover;
 }
 
-/* Navigation Arrows */
+/* Navigation */
 .slider-nav-button {
     position: absolute;
     top: 50%;
@@ -543,7 +543,7 @@ const appStyles = `
     }
 }
 
-/* Big Promotional Banner */
+/* Banner */
 .big-banner-container {
     max-width: 1400px;
     margin: 12px auto;
