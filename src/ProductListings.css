@@ -1,8 +1,13 @@
-.body {
+body {
   font-size: 14px;
   font-weight: 400;
   color: #212121;
   line-height: 1.4;
+  margin: 0; 
+  padding: 0; 
+  height: 100%; 
+  width: 100vw;  
+  overflow-x: hidden;
 }
 
 a, img {
@@ -14,7 +19,7 @@ a, img {
 
 .page-layout {
     display: flex;
-    padding: 10px 0;
+    padding: 8px;
     /* max-width: 1240px; */
     margin: 0 auto;   
     font-family: Roboto, Arial, sans-serif;
@@ -22,26 +27,97 @@ a, img {
 }
 
 .filter-sidebar {  
-    width: 280px;
-    flex-basis: auto;
-    padding: 0px 10px 0px 0px;
-    background-color: #fff;
-    height: fit-content;
-    margin-right: 10px;
+  width: 20%;
+  min-width: 240px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
 
-.filter-sidebar h3 {
-    font-size: 18px;
+
+/* Filters */
+.filter-group {
     padding-bottom: 10px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #eee; 
     margin-bottom: 15px;
 }
 
-.listings-area {      
-    flex-grow: 1;
-    padding: 0 10px;
+.filter-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; 
+    padding: 10px 0;
 }
 
+.filter-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.filter-arrow-icon {
+    transition: transform 0.3s ease-in-out; 
+    fill: #000000; 
+}
+
+.filter-arrow-icon.closed {
+    transform: rotate(0deg); 
+}
+
+.filter-arrow-icon.open {
+    transform: rotate(180deg);
+}
+
+.filter-options-container {
+    padding-top: 5px;
+    overflow: hidden; 
+}
+
+.filter-option {
+    display: block;
+    padding: 5px 0;
+    font-size: 13px;
+    color: #555;
+}
+.filter-sidebar h3 {
+  font-size: 18px;
+  padding: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 15px;
+}
+
+.IZmjtf {
+  display: inline-block;
+  margin-right: 5px;  
+  cursor: pointer;
+}
+.listings-area {      
+    flex-grow: 1;
+}
+
+.filter-title-wrapper {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0; 
+}
+     
+.filter-arrow-icon {
+    width: 10px;       
+    height: 10px;
+    margin-left: 10px;
+    fill: #878787;
+    transform: rotate(270deg); 
+    transition: transform 0.2s ease;
+}
+
+.filter-group.is-open .filter-arrow-icon {
+    transform: rotate(90deg); 
+}
 .filter-group {
     padding: 10px 15px;
     border-bottom: 1px solid #f0f0f0;
@@ -52,7 +128,7 @@ a, img {
   font-weight: bold;
   text-transform: none;          
   letter-spacing: normal;
-  display: block; 
+  display: block;
   margin: 0; 
   padding: 0 0 10px 0; 
   color: #212121;
@@ -61,7 +137,7 @@ a, img {
 .filter-option {
   vertical-align: middle;
   font-size: 14px;
-  padding-left: 11px;
+  padding: 3px 0;
   color: #212121;
   display: inline-block;
   width: calc(100% - 14px - 11px);
@@ -215,7 +291,7 @@ a, img {
 
 
 .filter-sidebar {
-    width: 280px; 
+    width: 250px; 
     padding: 10px 0;
     box-sizing: border-box;
 }  
@@ -236,12 +312,11 @@ a, img {
   letter-spacing: normal;
   display: block;
   margin: 0;
-  padding: 0 0 10px 0;
   color: #212121;
 }
 
 .price-slider-container {
-    padding: 10px 5px 25px 5px; 
+    /* padding: 1px 5px 25px 1px;  */
     position: relative;
 }
 
@@ -279,18 +354,27 @@ a, img {
 }
 
 .slider-marks {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    width: calc(100% - 20px);
-    bottom: 5px;
-    left: 10px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  position: relative; 
+  margin-top: 15px; 
+  padding: 0 10px; 
+  width: calc(100% - 10px); 
+  box-sizing: border-box; 
 }
 
 .mark {
-    width: 1px;
-    height: 4px;
-    background: #ccc;
+  height: 3px; 
+  width: 3px;  
+  background-color: #bbbbbb; 
+  border-radius: 50%; 
+  display: inline-block; 
+  flex-shrink: 0; 
+}
+
+.mark.active-range {
+  background-color: #007bff; 
 }
 
 .price-dropdowns {
@@ -311,8 +395,8 @@ a, img {
 }
 
 .price-select {
-width: 100%;
-  border: 1px solid #e0e0e0;
+  width: 100%;
+  border: 1px solid #e0e0e0; 
   border-radius: 1px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -568,6 +652,7 @@ width: 100%;
   color: #212121;
   line-height: 22px;
   display: table;
+  font-size: 14px;
 }
 
 .product-specs li::marker {
@@ -576,6 +661,18 @@ width: 100%;
 
 .product-spec-item {
     margin-bottom: 3px;
+}
+
+.grey-slider {
+    height: 100%;
+    position: relative;
+    bottom: -6px;
+    margin-left: 5px;
+}
+
+.slider-all {
+    background: #e0e0e0;
+    display: inline-block;
 }
 
 .navbar-categories {

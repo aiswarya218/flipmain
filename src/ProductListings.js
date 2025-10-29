@@ -14,8 +14,6 @@ import { FaKickstarterK } from 'react-icons/fa';
 import { LuLamp, LuLayoutList, LuVolleyball } from 'react-icons/lu';
 import { FaZ } from 'react-icons/fa6';
 
-const MIN_VALUE = 0; 
-const MAX_VALUE = 30000;
 const productData = [
     { 
         "id": 1, 
@@ -457,71 +455,489 @@ const productData = [
     }
 ];
 
-const priceOptions = [
-    { value: 10000, label: '₹10000' },
-    { value: 15000, label: '₹15000' },
-    { value: 20000, label: '₹20000' },
-    { value: 30000, label: '₹30000' },
+// const priceOptions = [
+//     { value: 10000, label: '₹10000' },
+//     { value: 15000, label: '₹15000' },
+//     { value: 20000, label: '₹20000' },
+//     { value: 30000, label: '₹30000' },
+// ];
+
+// const PriceFilter = ({ filters, setFilters }) => { 
+//     const minPrice = filters.minPrice;
+//     const maxPrice = filters.maxPrice;
+
+//     const handleMinChange = useCallback((event) => {
+//         const newMin = Number(event.target.value);
+//         if (newMin < maxPrice) {
+//             setFilters(prev => ({ ...prev, minPrice: newMin })); 
+//         } else {
+//             alert(`Minimum price must be less than ₹${maxPrice}`);
+//             event.target.value = minPrice; 
+//         }
+//     }, [maxPrice, minPrice, setFilters]);
+
+//     const handleMaxChange = useCallback((event) => {
+//         const newMax = Number(event.target.value);
+//         if (newMax > minPrice || newMax === MAX_VALUE) {
+//             setFilters(prev => ({ ...prev, maxPrice: newMax }));
+//         } else {
+//             alert(`Maximum price must be greater than ₹${minPrice}`);
+//             event.target.value = maxPrice; 
+//         }
+//     }, [minPrice, maxPrice, setFilters]);
+
+//     const minDropdownOptions = useMemo(() => ([
+//         { value: MIN_VALUE, label: 'Min', disabled: true }, 
+//         ...priceOptions.filter(opt => opt.value < MAX_VALUE) 
+//     ]), []);
+
+//     const maxDropdownOptions = useMemo(() => ([
+//         ...priceOptions.filter(opt => opt.value > MIN_VALUE),
+//         { value: MAX_VALUE + 1, label: `₹${MAX_VALUE}+` } 
+//     ]), []);
+
+// return (
+//         <div className="filter-sidebar">
+//             <div className="price-filter-section">
+//                 <div className="filter-header">
+//                     <span className="header-text">PRICE</span>
+//                 </div>
+//                    <div class="grey-slider">
+//                    <div 
+//         className="slider-all" 
+//         style={{ height: '25px', width: '47.362px' }}
+//       ></div>
+//       <div 
+//         className="slider-all" 
+//         style={{ height: '25px', width: '47.362px' }}
+//       ></div>
+//       <div 
+//         className="slider-all" 
+//         style={{ height: '25px', width: '47.362px' }}
+//       ></div>
+//       <div 
+//         className="slider-all" 
+//         style={{ height: '25px', width: '47.362px' }}
+//       ></div>
+//       <div 
+//         className="slider-all" 
+//         style={{ height: '25px', width: '47.362px' }}
+//       ></div>
+//                    </div>
+//                 <div className="price-slider-container">
+//                     <div className="custom-slider-track">
+//                         <div className="slider-active-range" style={{ 
+//                             left: `${(minPrice / MAX_VALUE) * 100}%`, 
+//                             right: `${100 - (maxPrice / MAX_VALUE) * 100}%` 
+//                         }}></div> 
+//                         <div className="slider-thumb" style={{ left: `${(minPrice / MAX_VALUE) * 100}%` }}></div>
+//                         <div className="slider-thumb max-thumb" style={{ left: `${(maxPrice / MAX_VALUE) * 100}%` }}></div>
+//                     </div>
+
+//                     <div className="slider-marks">
+//                         {[...Array(6)].map((_, index) => (
+//                             <span key={index} className="mark"></span>
+//                         ))}
+//                     </div>
+//                 </div>
+
+//                 <div className="price-dropdowns">
+//                     <div className="dropdown-wrapper">
+//                         <select className="price-select min-select" value={minPrice} onChange={handleMinChange}>
+//                             {minDropdownOptions.map((option) => (
+//                                 <option key={option.value} value={option.value} disabled={option.disabled}>
+//                                     {option.label}
+//                                 </option>
+//                             ))}
+//                         </select>
+//                     </div>
+//                     <span className="to-text">to</span>
+
+//                     <div className="dropdown-wrapper">
+//                         <select className="price-select max-select" value={maxPrice} onChange={handleMaxChange} >
+//                             {maxDropdownOptions.map((option) => (
+//                                 <option key={option.value} value={option.value} >
+//                                     {option.label}
+//                                 </option>
+//                             ))}
+//                         </select>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// const ProductFilters = ({ filters, setFilters }) => {
+//     const uniqueBrands = ['Apple', 'Samsung', 'Motorola', 'Google', 'REDMI', 'POCO', 'realme', 'vivo', 'Nokia', 'HOTLINE'].sort();
+
+//     const handleBrandChange = (brand) => {
+//         setFilters(prev => {
+//             const newBrands = prev.brands.includes(brand)
+//                 ? prev.brands.filter(b => b !== brand)
+//                 : [...prev.brands, brand];
+//             return { ...prev, brands: newBrands };
+//         });
+//     };
+
+//     return (
+//         <div className="filter-sidebar">
+//             <h3>Filters</h3>
+
+//             <div className="filter-group categories-group">
+//                 <div className="filter-title">CATEGORIES</div>
+//                 <div className="category-links">
+//                     <div style={{ color: '#878787', fontSize: '14px', marginBottom: '5px' }}>
+//                         <span style={{ marginRight: '5px' }}><svg width="10" height="10" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="IZmjtf"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="P3pAQJ"></path></svg></span> Mobiles &amp; Accessories
+//                     </div>
+//                     <div style={{ fontWeight: 'bold', fontSize: '14px' }}>
+//                         Mobiles
+//                     </div>
+//                 </div>
+//             </div>
+       
+//             <PriceFilter filters={filters} setFilters={setFilters} />
+            
+//             <div className="filter-group">
+//                 <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">BRAND</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//                   </svg>  
+//                 </div>
+//                 {uniqueBrands.slice(0, 5).map(brand => (   
+//                     <label key={brand} className="filter-option">
+//                         <input type="checkbox" className="checkbox" checked={filters.brands.includes(brand)} onChange={() => handleBrandChange(brand)}/>
+//                         {brand}
+//                     </label>
+//                 ))}
+//                 {uniqueBrands.length > 5 && (
+//                     <div style={{color: '#2874f0', fontSize: '14px', cursor: 'pointer', marginTop: '5px'}}>
+//                         {uniqueBrands.length - 5} MORE
+//                     </div>
+//                 )}     
+//             </div>
+
+//             {/* <div className="filter-group">
+//                     <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">NETWORK TYPE</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//                   </svg>  
+//                 </div>
+//                 {['5G', '4G', '3G'].map(network => (
+//                     <label key={network} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {network}
+//                     </label>
+//                 ))}
+//             </div> */}
+
+// <div className="all-filters-container">
+//       <FilterSection title="NETWORK TYPE" options={['5G', '4G', '3G']} />
+//       <FilterSection title="CUSTOMER RATINGS" options={['4★ & above', '3★ & above']} />
+//       <FilterSection title="GST INVOICE AVAILABLE" options={['GST Invoice Available']} />
+//       <FilterSection title="RAM" options={['4 GB', '3 GB', '6 GB', '8 GB and Above']} />
+//       <FilterSection title="INTERNAL STORAGE" options={['256 GB & Above', '128 - 255.9 GB', '64 - 127.9 GB']} />
+//       <FilterSection title="BATTERY CAPACITY" options={['4000 - 4999 mAh', '5000 - 5999 mAh', '5000 mAh Above']} />
+//       <FilterSection title="SCREEN SIZE" options={['6.4 inch & Above', '6 inch above', '5.7 - 5.9 inch']} />
+//       <FilterSection title="PRIMARY CAMERA" options={['5 - 7.9 MP', 'Below 5 MP', '21 MP Above', '48 - 63.9 MP']} />
+//       <FilterSection title="SECONDARY CAMERA" options={['12 - 12.9 MP', '16 - 20.9 MP', '21 MP Above', '5 - 7.9 MP']} />
+//       <FilterSection title="PROCESSOR BRAND" options={['AMD', 'Apple', 'ARM']} />
+//       <FilterSection title="SPECIALITY" options={['Big Storage', 'Higher Performance', 'Long-lasting Battery']} />
+//       <FilterSection title="CLOCK SPEED" options={['1.5-1.9 GHz', '2-2.5 GHz', '2.5 & Above']} />
+// </div>
+
+//             {/* <div className="filter-group">
+//                     <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">GST INVOICE AVAILABLE</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//                   </svg>
+//                 </div>
+//                 {['GST Invoice Available'].map(invoice => (
+//                     <label key={invoice} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {invoice}
+//                     </label>
+//                 ))}
+//             </div> */}
+
+//              {/* <div className="filter-group">
+//                     <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">RAM</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//         </svg>
+//                 </div>
+//                 {['4 GB', '3 GB', '6 GB', '8 GB and Above'].map(ram => ( 
+//                     <label key={ram} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {ram}
+//                     </label>
+//                 ))}
+//             </div>
+
+//              <div className="filter-group">
+//                     <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">INTERNAL STORAGE</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//         </svg>
+//                 </div>
+//                 {['256 GB & Above', '128 - 255.9 GB', '64 - 127.9 GB'].map(storage => (
+//                     <label key={storage} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {storage}
+//                     </label>
+//                 ))}
+//             </div>
+
+//             <div className="filter-group">
+//                     <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">BATTERY CAPACITY</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//         </svg>
+//                 </div>
+//                 {['4000 - 4999 mAh', '5000 - 5999 mAh', '5000 mAh Above'].map(battery => (
+//                     <label key={battery} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {battery}
+//                     </label> 
+//                 ))}
+//             </div> 
+
+//             <div className="filter-group">
+//                     <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">SCREEN SIZE</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//         </svg>
+//                 </div>
+//                 {['6.4 inch & Above', '6 inch above', '5.7 - 5.9 inch'].map(screen => (
+//                     <label key={screen} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {screen}
+//                     </label>
+//                 ))}
+//             </div>
+
+//       <div className="filter-group">
+//     <div className="filter-title-wrapper"> 
+//         <div className="filter-title">PRIMARY CAMERA</div>
+//         <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//         </svg>
+//     </div>
+//     {['5 - 7.9 MP', 'Below 5 MP', '21 MP Above', '48 - 63.9 MP'].map(primary => (
+//         <label key={primary} className="filter-option">
+//             <input type="checkbox" className="checkbox" />
+//             {primary}
+//         </label>
+//     ))}
+// </div>
+
+//             <div className="filter-group">
+//                     <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">SECONDARY CAMERA</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//         </svg>
+//                 </div>
+//                 {['12 - 12.9 MP', '16 - 20.9 MP', '21 MP Above', '5 - 7.9 MP'].map(secondary => (
+//                     <label key={secondary} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {secondary}
+//                     </label>
+//                 ))}
+//             </div>
+
+//             <div className="filter-group">
+//                     <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">PROCESSOR BRAND</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//         </svg>
+//                 </div>
+//                 {['AMD', 'Apple', 'ARM'].map(processor => (
+//                     <label key={processor} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {processor}
+//                     </label>
+//                 ))}
+//             </div>
+
+//             <div className="filter-group">
+//                     <div className="filter-title-wrapper"> 
+//                 <div className="filter-title">SPECIALITY</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//         </svg>
+//                 </div>
+//                 {['Big Storage', 'Higher Performance', 'Long-lasting Battery'].map(speciality => (
+//                     <label key={speciality} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {speciality}
+//                     </label>
+//                 ))}
+//             </div>  
+            
+//             <div className="filter-group">
+//                     <div className="filter-title-wrapper">
+//                 <div className="filter-title">CLOCK SPEED</div>
+//                   <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className="filter-arrow-icon">
+//             <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+//         </svg>
+//                 </div>
+//                 {['1.5-1.9 GHz', '2-2.5 GHz', '2.5 & Above'].map(clock => (
+//                     <label key={clock} className="filter-option">
+//                         <input type="checkbox" className="checkbox" />
+//                         {clock}   
+//                     </label>
+//                 ))}
+//             </div> */}
+//         </div>
+//     );
+// };
+const MIN_VALUE = 0; 
+const MAX_VALUE = 30000;
+const priceOptions = [       
+    { value: 10000, label: '₹10,000' },
+    { value: 15000, label: '₹15,000' },
+    { value: 20000, label: '₹20,000' },
+    { value: 30000, label: '₹30,000' },
 ];
+const initialFilters = { brands: [] }; 
+const initialMinPrice = 5000; 
+const initialMaxPrice = 25000; 
+const uniqueBrands = ['Apple', 'Samsung', 'Motorola', 'Google', 'REDMI', 'POCO', 'realme', 'vivo', 'Nokia', 'HOTLINE'].sort();
 
-const PriceFilter = ({ filters, setFilters }) => { 
-    const minPrice = filters.minPrice;
-    const maxPrice = filters.maxPrice;
 
-    const handleMinChange = useCallback((event) => {
-        const newMin = Number(event.target.value);
-        if (newMin < maxPrice) {
-            setFilters(prev => ({ ...prev, minPrice: newMin })); 
-        } else {
-            alert(`Minimum price must be less than ₹${maxPrice}`);
-            event.target.value = minPrice; 
-        }
-    }, [maxPrice, minPrice, setFilters]);
+const ProductFilters = ({ filters = initialFilters, setFilters = () => {} }) => {
+    
+    const [minPrice, setMinPrice] = useState(initialMinPrice);
+    const [maxPrice, setMaxPrice] = useState(initialMaxPrice);
+    const handleMinChange = (e) => setMinPrice(Number(e.target.value));
+    const handleMaxChange = (e) => setMaxPrice(Number(e.target.value));
 
-    const handleMaxChange = useCallback((event) => {
-        const newMax = Number(event.target.value);
-        if (newMax > minPrice || newMax === MAX_VALUE) {
-            setFilters(prev => ({ ...prev, maxPrice: newMax }));
-        } else {
-            alert(`Maximum price must be greater than ₹${minPrice}`);
-            event.target.value = maxPrice; 
-        }
-    }, [minPrice, maxPrice, setFilters]);
-
-    const minDropdownOptions = useMemo(() => ([
-        { value: MIN_VALUE, label: 'Min', disabled: true }, 
-        ...priceOptions.filter(opt => opt.value < MAX_VALUE) 
-    ]), []);
-
+    const minDropdownOptions = useMemo(() => {
+        return priceOptions.map(option => ({
+            ...option,
+            disabled: option.value > maxPrice,
+        }));
+    }, [maxPrice]);
+    
     const maxDropdownOptions = useMemo(() => ([
-        ...priceOptions.filter(opt => opt.value > MIN_VALUE),
+        ...priceOptions.filter(opt => opt.value > minPrice),
         { value: MAX_VALUE + 1, label: `₹${MAX_VALUE}+` } 
-    ]), []);
+    ]), [minPrice]);
 
-return (
-        <div className="filter-sidebar">
-            <div className="price-filter-section">
-                <div className="filter-header">
-                    <span className="header-text">PRICE</span>
+    const [visibility, setVisibility] = useState({
+        'GST INVOICE AVAILABLE': true,
+        'RAM': true,
+        'INTERNAL STORAGE': true,
+        'BATTERY CAPACITY': true,
+        'NETWORK TYPE': true,
+        'BRAND': true,
+        'SCREEN SIZE': true,
+        'PRIMARY CAMERA': true,
+        'SECONDARY CAMERA': true,
+        'PROCESSOR BRAND': true,
+        'SPECIALITY': true,
+        'CLOCK SPEED': true,
+        'CUSTOMER RATINGS': true, 
+    });
+
+    const toggleVisibility = (title) => {
+        setVisibility(prevVisibility => ({
+            ...prevVisibility,
+            [title]: !prevVisibility[title],
+        }));
+    };
+    
+    const handleBrandChange = (brand) => {
+        setFilters(prev => {
+            const newBrands = prev.brands.includes(brand)
+                ? prev.brands.filter(b => b !== brand)
+                : [...prev.brands, brand];
+            return { ...prev, brands: newBrands };
+        });
+    };
+
+    const FilterSection = ({ title, options, isBrand = false }) => {
+        const isVisible = visibility[title];
+        const arrowClass = isVisible ? "filter-arrow-icon" : "filter-arrow-icon collapsed";
+        const displayedOptions = isBrand ? options.slice(0, 5) : options;
+
+        return (
+            <div className="filter-group">
+                <div className="filter-title-wrapper" onClick={() => toggleVisibility(title)}> 
+                    <div className="filter-title">{title}</div>
+                    <svg width="16" height="27" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" className={arrowClass}>
+                        <path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" />
+                    </svg>  
                 </div>
 
-                <div className="price-slider-container">
-                    <div className="custom-slider-track">
-                        <div className="slider-active-range" style={{ 
-                            left: `${(minPrice / MAX_VALUE) * 100}%`, 
-                            right: `${100 - (maxPrice / MAX_VALUE) * 100}%` 
-                        }}></div> 
-                        <div className="slider-thumb" style={{ left: `${(minPrice / MAX_VALUE) * 100}%` }}></div>
-                        <div className="slider-thumb max-thumb" style={{ left: `${(maxPrice / MAX_VALUE) * 100}%` }}></div>
-                    </div>
-
-                    <div className="slider-marks">
-                        {[...Array(7)].map((_, index) => (
-                            <span key={index} className="mark"></span>
+                {isVisible && (
+                    <div className="filter-options-container">
+                        {displayedOptions.map(option => (   
+                            <label key={option} className="filter-option">
+                                <input type="checkbox" className="checkbox" checked={isBrand ? filters.brands.includes(option) : false} onChange={() => isBrand ? handleBrandChange(option) : console.log(`${title} filter changed: ${option}`)} />
+                                {option}
+                            </label>
                         ))}
+
+                        {isBrand && options.length > 5 && (
+                            <div style={{color: '#2874f0', fontSize: '14px', cursor: 'pointer', marginTop: '5px'}}>
+                                {options.length - 5} MORE
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        );
+    };
+
+    return (
+      <div className="filter-sidebar">
+        <h3>Filters</h3>
+         <div className="filter-group categories-group">
+                 <div className="filter-title">CATEGORIES</div>
+                <div className="category-links">
+                   <div style={{ color: '#878787', fontSize: '14px', marginBottom: '5px' }}>
+                        <span style={{ marginRight: '5px' }}><svg width="10" height="10" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="IZmjtf"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="P3pAQJ"></path></svg></span> Mobiles &amp; Accessories
+                   </div>
+                    <div style={{ fontWeight: 'bold', fontSize: '14px' }}>
+                        Mobiles
                     </div>
                 </div>
+            </div>
+        <div className="price-filter-section">
+            <div className="filter-header">
+                <span className="header-text">PRICE</span>
+            </div>
 
+            <div className="grey-slider">
+                {[...Array(5)].map((_, i) => (
+                    <div key={i} className="slider-all" style={{ height: '25px', width: '47.362px' }} ></div>
+                ))}
+            </div>
+
+            <div className="price-slider-container">
+                <div className="custom-slider-track">
+                    <div className="slider-active-range" style={{ left: `${(minPrice / MAX_VALUE) * 100}%`, right: `${100 - (maxPrice / MAX_VALUE) * 100}%` }}></div> 
+                    <div className="slider-thumb" style={{ left: `${(minPrice / MAX_VALUE) * 100}%` }}></div>
+                    <div className="slider-thumb max-thumb" style={{ left: `${(maxPrice / MAX_VALUE) * 100}%` }}></div>
+                </div>
+
+                <div className="slider-marks">
+                    {[...Array(6)].map((_, index) => (
+                        <span key={index} className="mark"></span>
+                    ))}
+                </div>
+            </div>
+                
                 <div className="price-dropdowns">
                     <div className="dropdown-wrapper">
                         <select className="price-select min-select" value={minPrice} onChange={handleMinChange}>
@@ -545,175 +961,21 @@ return (
                     </div>
                 </div>
             </div>
-        </div>
-    );
-};
 
-const ProductFilters = ({ filters, setFilters }) => {
-    const uniqueBrands = ['Apple', 'Samsung', 'Motorola', 'Google', 'REDMI', 'POCO', 'realme', 'vivo', 'Nokia', 'HOTLINE'].sort();
-
-    const handleBrandChange = (brand) => {
-        setFilters(prev => {
-            const newBrands = prev.brands.includes(brand)
-                ? prev.brands.filter(b => b !== brand)
-                : [...prev.brands, brand];
-            return { ...prev, brands: newBrands };
-        });
-    };
-
-    return (
-        <div className="filter-sidebar">
-            <h3>Filters</h3>
-
-            <div className="filter-group categories-group">
-                <div className="filter-title">CATEGORIES</div>
-                <div className="category-links">
-                    <div style={{ color: '#878787', fontSize: '14px', marginBottom: '5px' }}>
-                        <span style={{ marginRight: '5px' }}>&lt;</span> Mobiles &amp; Accessories
-                    </div>
-                    <div style={{ fontWeight: 'bold', fontSize: '14px' }}>
-                        Mobiles
-                    </div>
-                </div>
-            </div>
-       
-            <PriceFilter filters={filters} setFilters={setFilters} />
-            
-            <div className="filter-group">
-                <div className="filter-title">BRAND</div>
-                {uniqueBrands.slice(0, 5).map(brand => (   
-                    <label key={brand} className="filter-option">
-                        <input type="checkbox" className="checkbox" checked={filters.brands.includes(brand)} onChange={() => handleBrandChange(brand)}/>
-                        {brand}
-                    </label>
-                ))}
-                {uniqueBrands.length > 5 && (
-                    <div style={{color: '#2874f0', fontSize: '14px', cursor: 'pointer', marginTop: '5px'}}>
-                        {uniqueBrands.length - 5} MORE
-                    </div>
-                )}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">NETWORK TYPE</div>
-                {['5G', '4G', '3G'].map(network => (
-                    <label key={network} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {network}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">CUSTOMER RATINGS</div>
-                {['4★ & above', '3★ & above'].map(ratings => (
-                    <label key={ratings} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {ratings}
-                    </label>
-                ))}  
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">GST INVOICE AVAILABLE</div>
-                {['GST Invoice Available'].map(invoice => (
-                    <label key={invoice} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {invoice}
-                    </label>
-                ))}
-            </div>
-
-             <div className="filter-group">
-                <div className="filter-title">RAM</div>
-                {['4 GB', '3 GB', '6 GB', '8 GB and Above'].map(ram => ( 
-                    <label key={ram} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {ram}
-                    </label>
-                ))}
-            </div>
-
-             <div className="filter-group">
-                <div className="filter-title">INTERNAL STORAGE</div>
-                {['256 GB & Above', '128 - 255.9 GB', '64 - 127.9 GB'].map(storage => (
-                    <label key={storage} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {storage}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">BATTERY CAPACITY</div>
-                {['4000 - 4999 mAh', '5000 - 5999 mAh', '5000 mAh Above'].map(battery => (
-                    <label key={battery} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {battery}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">SCREEN SIZE</div>
-                {['6.4 inch & Above', '6 inch above', '5.7 - 5.9 inch'].map(screen => (
-                    <label key={screen} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {screen}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">PRIMARY CAMERA</div>
-                {['5 - 7.9 MP', 'Below 5 MP', '21 MP Above', '48 - 63.9 MP'].map(primary => (
-                    <label key={primary} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {primary}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">SECONDARY CAMERA</div>
-                {['12 - 12.9 MP', '16 - 20.9 MP', '21 MP Above', '5 - 7.9 MP'].map(secondary => (
-                    <label key={secondary} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {secondary}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">PROCESSOR BRAND</div>
-                {['AMD', 'Apple', 'ARM'].map(processor => (
-                    <label key={processor} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {processor}
-                    </label>
-                ))}
-            </div>
-
-            <div className="filter-group">
-                <div className="filter-title">SPECIALITY</div>
-                {['Big Storage', 'Higher Performance', 'Long-lasting Battery'].map(speciality => (
-                    <label key={speciality} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {speciality}
-                    </label>
-                ))}
-            </div>  
-            
-            <div className="filter-group">
-                <div className="filter-title">CLOCK SPEED</div>
-                {['1.5-1.9 GHz', '2-2.5 GHz', '2.5 & Above'].map(clock => (
-                    <label key={clock} className="filter-option">
-                        <input type="checkbox" className="checkbox" />
-                        {clock}
-                    </label>
-                ))}
-            </div>
-        </div>
+            <FilterSection title="BRAND" options={uniqueBrands} isBrand={true} />
+            <FilterSection title="CUSTOMER RATINGS" options={['4★ & above', '3★ & above']} />
+            <FilterSection title="NETWORK TYPE" options={['5G', '4G', '3G']} />
+            <FilterSection title="GST INVOICE AVAILABLE" options={['GST Invoice Available']} />
+            <FilterSection title="RAM" options={['4 GB', '3 GB', '6 GB', '8 GB and Above']} />
+            <FilterSection title="INTERNAL STORAGE" options={['256 GB & Above', '128 - 255.9 GB', '64 - 127.9 GB']} />
+            <FilterSection title="BATTERY CAPACITY" options={['4000 - 4999 mAh', '5000 - 5999 mAh', '5000 mAh Above']} />
+            <FilterSection title="SCREEN SIZE" options={['6.4 inch & Above', '6 inch above', '5.7 - 5.9 inch']} />
+            <FilterSection title="PRIMARY CAMERA" options={['5 - 7.9 MP', 'Below 5 MP', '21 MP Above', '48 - 63.9 MP']} />
+            <FilterSection title="SECONDARY CAMERA" options={['12 - 12.9 MP', '16 - 20.9 MP', '21 MP Above', '5 - 7.9 MP']} />
+            <FilterSection title="PROCESSOR BRAND" options={['AMD', 'Apple', 'ARM']} />
+            <FilterSection title="SPECIALITY" options={['Big Storage', 'Higher Performance', 'Long-lasting Battery']} />
+            <FilterSection title="CLOCK SPEED" options={['1.5-1.9 GHz', '2-2.5 GHz', '2.5 & Above']} />
+    </div>
     );
 };
 
@@ -789,8 +1051,7 @@ const ProductItem = ({ product }) => {
                     </div>
         
                     {product.offers.exchange_offer && (
-                        <p className="offer-text"
-                            dangerouslySetInnerHTML={{ __html: product.offers.exchange_offer  }}/>
+                        <p className="offer-text" dangerouslySetInnerHTML={{ __html: product.offers.exchange_offer  }} />
                     )}
                     {product.offers.bank_offer && (
                         <p className="offer-text1">{product.offers.bank_offer}</p>
@@ -799,6 +1060,40 @@ const ProductItem = ({ product }) => {
             </div>
         </div>
     );
+};
+
+const FilterSection = ({ title, options }) => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const toggleSection = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const DownArrowSVG = (
+    <svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" className={`filter-arrow-icon ${isOpen ? 'open' : 'closed'}`} >
+      <path d="M0 2.5 L5 7.5 L10 2.5 Z" fill="#2874f0" />
+    </svg>
+  );
+
+  return (
+    <div className="filter-group">
+      <div className="filter-title-wrapper" onClick={toggleSection}> 
+        <div className="filter-title">{title}</div>
+        {DownArrowSVG}
+      </div>
+
+      {isOpen && (
+        <div className="filter-options-container">
+          {options.map(option => (
+            <label key={option} className="filter-option">
+              <input type="checkbox" className="checkbox" />
+              {option}
+            </label>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 };
 
 const ProductListings = ({ mobilePhones, totalResults, sortBy, setSortBy }) => {

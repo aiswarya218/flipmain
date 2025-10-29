@@ -48,7 +48,7 @@ const appStyles = `
         z-index: 1000;
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        padding: 12px 16px;
+        padding: 12px 28px;
     }
     
     .header-content {
@@ -82,16 +82,14 @@ const appStyles = `
       border-radius: 8px; 
       padding: 0 0 0 16px; 
       height: 40px; 
-      box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
-      flex-grow: 1; kk    width: 100%; 
-      margin: 0 32px;
+      flex-grow: 1; 
+      width: 100%; 
     }
 
 .search-bar .search-icon-wrapper {    
   justify-content: flex-end;
   border-radius: 2px;
-  cursor: pointer;
-  padding: 8px 8px 8px 12px;     
+  cursor: pointer;  
   background-color: transparent;
 }
    .search-bar input {
@@ -127,7 +125,7 @@ const appStyles = `
 
     .nav-link {
         display: none;
-        align-items: center;
+        align-items: center; 
         color: #172337;
         text-decoration: none;
         font-weight: 500;
@@ -139,6 +137,12 @@ const appStyles = `
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+        .nav-link-login span {
+        margin-right: 8px;
+        }
+    .nav-link-login img {
+        margin-right: 8px;
     }
     .nav-link-seller {
         padding: 0 20px;
@@ -305,9 +309,8 @@ const appStyles = `
 }
 
 .top-ad-card {
-    aspect-ratio: 16 / 9; 
+    aspect-ratio: 16 / 9;
     justify-content: space-between; 
-    padding: 16px 0 16px 16px; 
 }
 
 .ad-content-wrapper {
@@ -479,6 +482,7 @@ const appStyles = `
   text-overflow: ellipsis;
   margin: 0;
   padding: 0;
+  font-weight: bold;
 }
     .deal-info {
         font-size: 11px;
@@ -547,7 +551,6 @@ const appStyles = `
 .big-banner-container {
     max-width: 1400px;
     margin: 12px auto;
-    padding: 0 16px;
     position: relative;
 }
 
@@ -644,13 +647,12 @@ const appStyles = `
 }
 /* Directory Section */
 .directory-section {
-    padding: 25px;
-    margin: 0 auto;
-    max-width: 1400px;
-    border-radius: 0;
-    box-shadow: none;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    color: #666;
+  background-color: #f5f5f5;
+  margin: 0 auto;
+  text-align: left;
+  padding: 25px;
+  line-height: 1.5;
 }
 
 .directory-container {
@@ -658,7 +660,6 @@ const appStyles = `
   background-color: #f5f5f5;
   margin: 0 auto;
   text-align: left;
-  padding: 25px;
   line-height: 1.5;
 }
 
@@ -684,13 +685,10 @@ const appStyles = `
 }
 
 .directory-column span {
-    color: #565656;
-    text-transform: uppercase;
-    font-size: 14px;
-    text-transform: uppercase;
-    margin-right: 4px; 
-    margin-bottom: 0; 
-    flex-shrink: 0; 
+   color: #565656;
+  text-transform: uppercase;
+  margin-right: 4px;
+  font-size: 14px;  
 }
 
 .directory-column a {
@@ -780,9 +778,6 @@ const appStyles = `
    .directory-container {
         flex-direction: column;
         gap: 0;
-    }
-    .directory-column {
-        padding: 10px 0;
     }
   }
 }
@@ -1212,7 +1207,7 @@ const DirectorySection = () => (
         {Object.keys(directoryData).map((heading, index) => (
           <div className="directory-column" key={index}>
             <span>{heading}</span>
-            {directoryData[heading].map((link, linkIndex) => (
+            {directoryData[heading].map((link, linkIndex) => (   
               <a href="#" key={linkIndex}>{link}</a>
             ))}
           </div>
@@ -1235,7 +1230,8 @@ const FlipkartLandingPage = () => {
                     <CategoryMenu />
                     <MainBanner />  
                     <DealsSection />
-                    <TopAdGrid /><BottomAdGrid />
+                    <TopAdGrid />
+                    <BottomAdGrid />
                     <DealsSection1 />
                     <OfferStrip data={offerStripData} />
                     <BigBanner data={bigBannerData} />

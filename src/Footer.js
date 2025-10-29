@@ -1,5 +1,8 @@
 import React from 'react';
 import './styles.css';
+import { SiD3Dotjs } from 'react-icons/si';
+import { DiCssdeck, DiDart } from 'react-icons/di';
+import { LiaDnaSolid } from 'react-icons/lia';
 
 const Footer = () => (
    <footer className="main-footer-container">
@@ -17,7 +20,7 @@ const Footer = () => (
           <h4>GROUP COMPANIES</h4>
           <a href="#">Myntra</a>
           <a href="#">Cleartrip</a>
-          <a href="#">Shopsy</a>
+          <a href="#">Shopsy</a> 
         </div>
         <div className="footer-column">
           <h4>HELP</h4>

@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
+import { BiVector } from 'react-icons/bi';
+import { CgCPlusPlus, CgVercel } from 'react-icons/cg';
 import { DiCoffeescript, DiCssdeck, DiDart, DiFirebase, DiSafari, DiSnapSvg } from 'react-icons/di';
 import { FaDiceFive, FaKickstarterK } from 'react-icons/fa';
 import { FaD } from 'react-icons/fa6';
 import { FcFilledFilter } from 'react-icons/fc';
-import { GiKitchenKnives } from 'react-icons/gi';
+import { GiF1Car, GiGClef, GiKitchenKnives } from 'react-icons/gi';
 import { LiaDiceD6Solid, LiaDnaSolid } from 'react-icons/lia';
+import { LuLamp } from 'react-icons/lu';
+import { MdMacroOff } from 'react-icons/md';
 import { PiDiceFiveDuotone, PiFloppyDiskFill } from 'react-icons/pi';
 import { RiRadarFill } from 'react-icons/ri';
-import { SiAsahilinux, SiD, SiD3Dotjs, SiDarkreader, SiDsautomobiles, SiElsevier, SiWeb3Dotjs } from 'react-icons/si';
+import { SiAsahilinux, SiD, SiD3Dotjs, SiDarkreader, SiDlib, SiDsautomobiles, SiElsevier, SiWeb3Dotjs } from 'react-icons/si';
 import { SlSocialFacebook } from 'react-icons/sl';
 import { TbTrack } from 'react-icons/tb';
+import { VscCalendar } from 'react-icons/vsc';
 import { WiDaySleet } from 'react-icons/wi';
-import { useParams } from 'react-router-dom';
+import { data, useParams } from 'react-router-dom';
 
 const allProducts = {
     '1': {
@@ -340,7 +345,7 @@ const ProductDetails = ({ data }) => (
             <span className="current-price">{data.price}</span>
             <span className="mrp-price">{data.mrp}</span>
             <span className="discount-percent">{data.discount} Off</span>
-            <span className="question"><svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="dhBD+z"><defs><circle id="b" cx="8" cy="8" r="8"></circle><filter id="a" width="130%" height="130%" x="-15%" y="-8.8%" filterUnits="objectBoundingBox"><feMorphology in="SourceAlpha" operator="dilate" radius=".4" result="shadowSpreadOuter1"></feMorphology><feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"></feGaussianBlur><feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite><feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
+            <span className="question"><svg width="20" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="dhBD+z"><defs><circle id="b" cx="8" cy="8" r="8"></circle><filter id="a" width="130%" height="130%" x="-15%" y="-8.8%" filterUnits="objectBoundingBox"><feMorphology in="SourceAlpha" operator="dilate" radius=".4" result="shadowSpreadOuter1"></feMorphology><feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"></feGaussianBlur><feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite><feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"></feColorMatrix>
                 </filter></defs><g fill="none" fillRule="evenodd"> <g transform="translate(2 1)"><use fill="#000" filter="url(#a)" href="#b"></use> <use fill="#FCFCFC" stroke="#000" strokeOpacity=".3" strokeWidth=".8" href="#b"></use> </g><text fill="#1D1D1D" fontFamily="Roboto-Medium, Roboto" fontSize="11" fontWeight="400" opacity=".59" transform="translate(2 1)"><tspan x="6.6" y="12.2">i</tspan></text> </g></svg>
             </span>
         </div>
@@ -582,10 +587,12 @@ const ProductDetailPage = () => {
             font-size: 32px;
             font-weight: 600;
             margin-right: 10px;
+            vertical-align:sub;
         }
         .mrp-price {
             text-decoration: line-through;
             color: #878787;
+            vertical-align: middle;
         }
         .discount-percent {
             margin-left: 12px;
