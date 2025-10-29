@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { AiFillAlipaySquare, AiFillAmazonCircle, AiFillCheckSquare, AiFillSketchCircle, AiFillSketchSquare } from 'react-icons/ai';
-import { BsGlobeAsiaAustralia } from 'react-icons/bs';
-import { DiCssdeck, DiSafari } from 'react-icons/di';
-import { FcEmptyFilter } from 'react-icons/fc';
-import { GiDew, GiEvilWings } from 'react-icons/gi';
-import { LiaAdSolid, LiaStarAndCrescentSolid } from 'react-icons/lia';
-import { RiFeedbackFill, RiRadarFill } from 'react-icons/ri';
-import { Si1Dot1Dot1Dot1, Si2K, SiAkasaair, SiD, SiD3Dotjs, SiDocsdotrs, SiK3S, SiKakao, SiKasasmart, SiSass, SiSsrn, SiWwe } from 'react-icons/si';
-import { SlScreenDesktop } from 'react-icons/sl';
-import { WiSnowWind } from 'react-icons/wi';
+import { 
+  SiAkasaair, 
+  SiKakao, 
+  SiSass 
+} from 'react-icons/si';
+
 import { Link, useNavigate } from 'react-router-dom';
 
 const appStyles = `
@@ -147,11 +143,16 @@ const appStyles = `
     .nav-link-seller {
         padding: 0 20px;
         cursor: pointer;
+        whitespace: nowrap;
+    }
+    .nav-link-seller text {
+        white-space: nowrap;
     }
     .nav-link svg {
         width: 20px;
         height: 20px;
         margin-right: 4px;
+        whitespace: nowrap;
     }
 
     /* Category Menu */
@@ -928,7 +929,7 @@ const Header = () => {
                     </a>
                     <a href="#" className="nav-link nav-link-seller">
                         <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/Store-9eeae2.svg" alt="Become a Seller"></img>
-                        <span>Become a Seller</span>
+                        <text>Become a Seller</text>
                     </a>
                     <a href="#" className="nav-link nav-link-seller">
                      <img src="https://static-assets-web.flixcart.com/batman-returns/batman-returns/p/images/header_3verticalDots-ea7819.svg" width="24" height="24" alt="Dropdown with more help links"></img>

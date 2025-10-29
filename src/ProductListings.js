@@ -455,118 +455,118 @@ const productData = [
     }
 ];
 
-// const priceOptions = [
-//     { value: 10000, label: '₹10000' },
-//     { value: 15000, label: '₹15000' },
-//     { value: 20000, label: '₹20000' },
-//     { value: 30000, label: '₹30000' },
-// ];
+const priceOptions1 = [
+    { value: 10000, label: '₹10000' },
+    { value: 15000, label: '₹15000' },
+    { value: 20000, label: '₹20000' },
+    { value: 30000, label: '₹30000' },
+];
 
-// const PriceFilter = ({ filters, setFilters }) => { 
-//     const minPrice = filters.minPrice;
-//     const maxPrice = filters.maxPrice;
+const PriceFilter = ({ filters, setFilters }) => { 
+    const minPrice = filters.minPrice;
+    const maxPrice = filters.maxPrice;
 
-//     const handleMinChange = useCallback((event) => {
-//         const newMin = Number(event.target.value);
-//         if (newMin < maxPrice) {
-//             setFilters(prev => ({ ...prev, minPrice: newMin })); 
-//         } else {
-//             alert(`Minimum price must be less than ₹${maxPrice}`);
-//             event.target.value = minPrice; 
-//         }
-//     }, [maxPrice, minPrice, setFilters]);
+    const handleMinChange = useCallback((event) => {
+        const newMin = Number(event.target.value);
+        if (newMin < maxPrice) {
+            setFilters(prev => ({ ...prev, minPrice: newMin })); 
+        } else {
+            alert(`Minimum price must be less than ₹${maxPrice}`);
+            event.target.value = minPrice; 
+        }
+    }, [maxPrice, minPrice, setFilters]);
 
-//     const handleMaxChange = useCallback((event) => {
-//         const newMax = Number(event.target.value);
-//         if (newMax > minPrice || newMax === MAX_VALUE) {
-//             setFilters(prev => ({ ...prev, maxPrice: newMax }));
-//         } else {
-//             alert(`Maximum price must be greater than ₹${minPrice}`);
-//             event.target.value = maxPrice; 
-//         }
-//     }, [minPrice, maxPrice, setFilters]);
+    const handleMaxChange = useCallback((event) => {
+        const newMax = Number(event.target.value);
+        if (newMax > minPrice || newMax === MAX_VALUE) {
+            setFilters(prev => ({ ...prev, maxPrice: newMax }));
+        } else {
+            alert(`Maximum price must be greater than ₹${minPrice}`);
+            event.target.value = maxPrice; 
+        }
+    }, [minPrice, maxPrice, setFilters]);
 
-//     const minDropdownOptions = useMemo(() => ([
-//         { value: MIN_VALUE, label: 'Min', disabled: true }, 
-//         ...priceOptions.filter(opt => opt.value < MAX_VALUE) 
-//     ]), []);
+    const minDropdownOptions = useMemo(() => ([
+        { value: MIN_VALUE, label: 'Min', disabled: true }, 
+        ...priceOptions.filter(opt => opt.value < MAX_VALUE) 
+    ]), []);
 
-//     const maxDropdownOptions = useMemo(() => ([
-//         ...priceOptions.filter(opt => opt.value > MIN_VALUE),
-//         { value: MAX_VALUE + 1, label: `₹${MAX_VALUE}+` } 
-//     ]), []);
+    const maxDropdownOptions = useMemo(() => ([
+        ...priceOptions.filter(opt => opt.value > MIN_VALUE),
+        { value: MAX_VALUE + 1, label: `₹${MAX_VALUE}+` } 
+    ]), []);
 
-// return (
-//         <div className="filter-sidebar">
-//             <div className="price-filter-section">
-//                 <div className="filter-header">
-//                     <span className="header-text">PRICE</span>
-//                 </div>
-//                    <div class="grey-slider">
-//                    <div 
-//         className="slider-all" 
-//         style={{ height: '25px', width: '47.362px' }}
-//       ></div>
-//       <div 
-//         className="slider-all" 
-//         style={{ height: '25px', width: '47.362px' }}
-//       ></div>
-//       <div 
-//         className="slider-all" 
-//         style={{ height: '25px', width: '47.362px' }}
-//       ></div>
-//       <div 
-//         className="slider-all" 
-//         style={{ height: '25px', width: '47.362px' }}
-//       ></div>
-//       <div 
-//         className="slider-all" 
-//         style={{ height: '25px', width: '47.362px' }}
-//       ></div>
-//                    </div>
-//                 <div className="price-slider-container">
-//                     <div className="custom-slider-track">
-//                         <div className="slider-active-range" style={{ 
-//                             left: `${(minPrice / MAX_VALUE) * 100}%`, 
-//                             right: `${100 - (maxPrice / MAX_VALUE) * 100}%` 
-//                         }}></div> 
-//                         <div className="slider-thumb" style={{ left: `${(minPrice / MAX_VALUE) * 100}%` }}></div>
-//                         <div className="slider-thumb max-thumb" style={{ left: `${(maxPrice / MAX_VALUE) * 100}%` }}></div>
-//                     </div>
+return (
+        <div className="filter-sidebar">
+            <div className="price-filter-section">
+                <div className="filter-header">
+                    <span className="header-text">PRICE</span>
+                </div>
+                   <div class="grey-slider">
+                   <div 
+        className="slider-all" 
+        style={{ height: '25px', width: '47.362px' }}
+      ></div>
+      <div 
+        className="slider-all" 
+        style={{ height: '25px', width: '47.362px' }}
+      ></div>
+      <div 
+        className="slider-all" 
+        style={{ height: '25px', width: '47.362px' }}
+      ></div>
+      <div 
+        className="slider-all" 
+        style={{ height: '25px', width: '47.362px' }}
+      ></div>
+      <div 
+        className="slider-all" 
+        style={{ height: '25px', width: '47.362px' }}
+      ></div>
+                   </div>
+                <div className="price-slider-container">
+                    <div className="custom-slider-track">
+                        <div className="slider-active-range" style={{ 
+                            left: `${(minPrice / MAX_VALUE) * 100}%`, 
+                            right: `${100 - (maxPrice / MAX_VALUE) * 100}%` 
+                        }}></div> 
+                        <div className="slider-thumb" style={{ left: `${(minPrice / MAX_VALUE) * 100}%` }}></div>
+                        <div className="slider-thumb max-thumb" style={{ left: `${(maxPrice / MAX_VALUE) * 100}%` }}></div>
+                    </div>
 
-//                     <div className="slider-marks">
-//                         {[...Array(6)].map((_, index) => (
-//                             <span key={index} className="mark"></span>
-//                         ))}
-//                     </div>
-//                 </div>
+                    <div className="slider-marks">
+                        {[...Array(6)].map((_, index) => (
+                            <span key={index} className="mark"></span>
+                        ))}
+                    </div>
+                </div>
 
-//                 <div className="price-dropdowns">
-//                     <div className="dropdown-wrapper">
-//                         <select className="price-select min-select" value={minPrice} onChange={handleMinChange}>
-//                             {minDropdownOptions.map((option) => (
-//                                 <option key={option.value} value={option.value} disabled={option.disabled}>
-//                                     {option.label}
-//                                 </option>
-//                             ))}
-//                         </select>
-//                     </div>
-//                     <span className="to-text">to</span>
+                <div className="price-dropdowns">
+                    <div className="dropdown-wrapper">
+                        <select className="price-select min-select" value={minPrice} onChange={handleMinChange}>
+                            {minDropdownOptions.map((option) => (
+                                <option key={option.value} value={option.value} disabled={option.disabled}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <span className="to-text">to</span>
 
-//                     <div className="dropdown-wrapper">
-//                         <select className="price-select max-select" value={maxPrice} onChange={handleMaxChange} >
-//                             {maxDropdownOptions.map((option) => (
-//                                 <option key={option.value} value={option.value} >
-//                                     {option.label}
-//                                 </option>
-//                             ))}
-//                         </select>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// };
+                    <div className="dropdown-wrapper">
+                        <select className="price-select max-select" value={maxPrice} onChange={handleMaxChange} >
+                            {maxDropdownOptions.map((option) => (
+                                <option key={option.value} value={option.value} >
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 // const ProductFilters = ({ filters, setFilters }) => {
 //     const uniqueBrands = ['Apple', 'Samsung', 'Motorola', 'Google', 'REDMI', 'POCO', 'realme', 'vivo', 'Nokia', 'HOTLINE'].sort();
@@ -906,61 +906,15 @@ const ProductFilters = ({ filters = initialFilters, setFilters = () => {} }) => 
                  <div className="filter-title">CATEGORIES</div>
                 <div className="category-links">
                    <div style={{ color: '#878787', fontSize: '14px', marginBottom: '5px' }}>
-                        <span style={{ marginRight: '5px' }}><svg width="10" height="10" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="IZmjtf"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="P3pAQJ"></path></svg></span> Mobiles &amp; Accessories
+                        <span style={{ marginRight: '5px' }}>
+                          <svg width="10" height="10" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="IZmjtf"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#999" class="P3pAQJ"></path></svg></span> Mobiles &amp; Accessories
                    </div>
                     <div style={{ fontWeight: 'bold', fontSize: '14px' }}>
                         Mobiles
                     </div>
                 </div>
             </div>
-        <div className="price-filter-section">
-            <div className="filter-header">
-                <span className="header-text">PRICE</span>
-            </div>
-
-            <div className="grey-slider">
-                {[...Array(5)].map((_, i) => (
-                    <div key={i} className="slider-all" style={{ height: '25px', width: '47.362px' }} ></div>
-                ))}
-            </div>
-
-            <div className="price-slider-container">
-                <div className="custom-slider-track">
-                    <div className="slider-active-range" style={{ left: `${(minPrice / MAX_VALUE) * 100}%`, right: `${100 - (maxPrice / MAX_VALUE) * 100}%` }}></div> 
-                    <div className="slider-thumb" style={{ left: `${(minPrice / MAX_VALUE) * 100}%` }}></div>
-                    <div className="slider-thumb max-thumb" style={{ left: `${(maxPrice / MAX_VALUE) * 100}%` }}></div>
-                </div>
-
-                <div className="slider-marks">
-                    {[...Array(6)].map((_, index) => (
-                        <span key={index} className="mark"></span>
-                    ))}
-                </div>
-            </div>
-                
-                <div className="price-dropdowns">
-                    <div className="dropdown-wrapper">
-                        <select className="price-select min-select" value={minPrice} onChange={handleMinChange}>
-                            {minDropdownOptions.map((option) => (
-                                <option key={option.value} value={option.value} disabled={option.disabled}>
-                                    {option.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <span className="to-text">to</span>
-
-                    <div className="dropdown-wrapper">
-                        <select className="price-select max-select" value={maxPrice} onChange={handleMaxChange} >
-                            {maxDropdownOptions.map((option) => (
-                                <option key={option.value} value={option.value} >
-                                    {option.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
-            </div>
+      
 
             <FilterSection title="BRAND" options={uniqueBrands} isBrand={true} />
             <FilterSection title="CUSTOMER RATINGS" options={['4★ & above', '3★ & above']} />
